@@ -1,0 +1,84 @@
+{
+  "id": "platform",
+  "title": "Engines & Adapters",
+  "group": "Platform",
+  "icon": "Cog",
+  "lifecycle": "Released",
+  "description": "Motor adları ana menüde değil burada: Frappe/Django/Drupal/Odoo adapter olarak bağlanır.",
+  "cli": {
+    "tool": "adapter.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "cards",
+      "cols": 4,
+      "items": [
+        {
+          "title": "Frappe",
+          "icon": "Boxes",
+          "body": "metadata + form (birincil)",
+          "badge": "ok",
+          "badgeTone": "success"
+        },
+        {
+          "title": "Django",
+          "icon": "Boxes",
+          "body": "model-merkezli CRUD",
+          "badge": "ok",
+          "badgeTone": "success"
+        },
+        {
+          "title": "Drupal",
+          "icon": "Boxes",
+          "body": "salt-okunur köprü",
+          "badge": "degraded",
+          "badgeTone": "warning"
+        },
+        {
+          "title": "Odoo",
+          "icon": "Boxes",
+          "body": "workflow içe aktarımı",
+          "badge": "ok",
+          "badgeTone": "success"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "columns": [
+        "yetenek",
+        "frappe",
+        "django",
+        "drupal",
+        "odoo"
+      ],
+      "rows": [
+        [
+          "şema tanımı",
+          "✓ birincil",
+          "✓",
+          "okuma",
+          "✓"
+        ],
+        [
+          "workflow",
+          "✓",
+          "—",
+          "—",
+          "✓ birincil"
+        ],
+        [
+          "RBAC",
+          "✓",
+          "✓",
+          "✓",
+          "✓"
+        ]
+      ],
+      "title": "Capability map"
+    }
+  ]
+}

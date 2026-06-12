@@ -1,0 +1,43 @@
+{
+  "id": "insights",
+  "title": "AI İçgörüler",
+  "group": "Genel Bakış",
+  "icon": "Sparkles",
+  "lifecycle": "Staged",
+  "description": "Proaktif tespitler — AI önerir, geliştirici onaylar; sessiz mutasyon yok.",
+  "cli": {
+    "tool": "copilot.insights",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "cards",
+      "cols": 1,
+      "items": [
+        {
+          "title": "Eksik index",
+          "icon": "Zap",
+          "body": "orders.placed_at filtresi index'siz — migration q-8 taslağı hazır.",
+          "badge": "optimizasyon",
+          "badgeTone": "warning"
+        },
+        {
+          "title": "AA ihlal riski",
+          "icon": "Lightbulb",
+          "body": "accent rengi küçük metinde WCAG AA'yı geçemiyor — güvenli palet diff'i hazır.",
+          "badge": "içgörü",
+          "badgeTone": "secondary"
+        },
+        {
+          "title": "Telafi eksiği",
+          "icon": "Wand2",
+          "body": "listing-flow active→sold compensation boş — tanım kilitli.",
+          "badge": "öneri",
+          "badgeTone": "default"
+        }
+      ]
+    }
+  ]
+}

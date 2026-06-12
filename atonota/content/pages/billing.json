@@ -1,0 +1,65 @@
+{
+  "id": "billing",
+  "title": "Faturalama & Ölçümleme",
+  "group": "Gelir",
+  "icon": "CircleDollarSign",
+  "lifecycle": "Staged",
+  "description": "Compute tabanlı planlar + kullanım ölçümleme (compute/storage/AI token) + wallet.",
+  "cli": {
+    "tool": "billing.metering",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "tenant",
+        "plan",
+        "durum",
+        "MRR"
+      ],
+      "rows": [
+        [
+          "acme",
+          "Enterprise",
+          "active",
+          "₺18.400"
+        ],
+        [
+          "globex",
+          "Starter",
+          "trialing",
+          "₺0 (9g)"
+        ],
+        [
+          "initech",
+          "Growth",
+          "past_due",
+          "₺2.900"
+        ]
+      ]
+    },
+    {
+      "type": "progress",
+      "items": [
+        {
+          "label": "acme compute",
+          "value": 71,
+          "tone": "warn"
+        },
+        {
+          "label": "acme storage",
+          "value": 44
+        },
+        {
+          "label": "acme AI token",
+          "value": 65,
+          "sub": "9.1M"
+        }
+      ],
+      "title": "Kullanım ölçümleme"
+    }
+  ]
+}

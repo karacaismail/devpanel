@@ -1,0 +1,51 @@
+{
+  "id": "api-keys",
+  "title": "API Keys",
+  "group": "Kontrol Et",
+  "icon": "KeyRound",
+  "lifecycle": "Released",
+  "description": "Scope'lu API anahtarları — oluştur/iptal/rotasyon, kullanım izli.",
+  "cli": {
+    "tool": "apikey.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "etiket",
+        "prefix",
+        "env",
+        "scope"
+      ],
+      "rows": [
+        [
+          "ERP entegrasyonu",
+          "fk_live_a3x9…",
+          "prod",
+          "party.read, order.read"
+        ],
+        [
+          "vibebot (MCP)",
+          "fk_live_m1c7…",
+          "prod",
+          "scaffold, data.query"
+        ],
+        [
+          "lokal",
+          "fk_test_d8k2…",
+          "dev",
+          "*"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "icon": "KeyRound",
+      "text": "Anahtar yalnız bir kez tam gösterilir; panelde hep maskeli — hash + prefix saklanır."
+    }
+  ]
+}

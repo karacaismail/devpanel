@@ -1,0 +1,41 @@
+{
+  "id": "notifications",
+  "title": "Bildirimler",
+  "group": "Genel Bakış",
+  "icon": "Bell",
+  "lifecycle": "Released",
+  "description": "Olay akışı — sistem/dağıtım/güvenlik/AI kanalları.",
+  "cli": {
+    "tool": "notification.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "tür",
+        "mesaj",
+        "zaman"
+      ],
+      "rows": [
+        [
+          "security",
+          "fraud-guard sandbox beyan dışı erişim denedi — karantinada",
+          "8d önce"
+        ],
+        [
+          "deploy",
+          "staging v1.8.0 deploy edildi (2 change-set)",
+          "1s önce"
+        ],
+        [
+          "ai",
+          "AI triage BUG-141 için şiddet önerisi bıraktı",
+          "32d önce"
+        ]
+      ]
+    }
+  ]
+}

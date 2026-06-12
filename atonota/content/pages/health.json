@@ -1,0 +1,51 @@
+{
+  "id": "health",
+  "title": "Health",
+  "group": "Gözlemle",
+  "icon": "Heartbeat",
+  "lifecycle": "Released",
+  "description": "Servis sağlık panosu + uptime monitörleri — kernel iç durumu.",
+  "cli": {
+    "tool": "health.check",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "servis",
+        "durum",
+        "detay",
+        "uptime"
+      ],
+      "rows": [
+        [
+          "Kernel API",
+          "ok",
+          "p95 23ms",
+          "%99.98"
+        ],
+        [
+          "PostgreSQL",
+          "ok",
+          "RLS aktif",
+          "%99.99"
+        ],
+        [
+          "Mail zinciri",
+          "degraded",
+          "birincil yavaş",
+          "%97.8"
+        ],
+        [
+          "WASM sandbox",
+          "degraded",
+          "fraud-guard karantinada",
+          "%99.2"
+        ]
+      ]
+    }
+  ]
+}

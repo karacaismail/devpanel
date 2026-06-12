@@ -1,0 +1,45 @@
+{
+  "id": "alerts",
+  "title": "Uyarılar",
+  "group": "Gözlemle",
+  "icon": "BellRing",
+  "lifecycle": "Released",
+  "description": "Eşik tabanlı kurallar + bildirim kanalları — kural değişikliği audit'e yazılır.",
+  "cli": {
+    "tool": "alert.rules",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "kural",
+        "eşik",
+        "kanal",
+        "7g"
+      ],
+      "rows": [
+        [
+          "p99 latency",
+          "> 2s",
+          "webhook → ops-slack",
+          "3×"
+        ],
+        [
+          "DLQ derinliği",
+          "> 10",
+          "e-posta + çağrı",
+          "0"
+        ],
+        [
+          "build başarısız",
+          "staging/prod",
+          "webhook",
+          "1×"
+        ]
+      ]
+    }
+  ]
+}

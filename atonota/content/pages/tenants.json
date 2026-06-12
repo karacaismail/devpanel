@@ -1,0 +1,81 @@
+{
+  "id": "tenants",
+  "title": "Tenant & Siteler",
+  "group": "Yürüt",
+  "icon": "Building2",
+  "lifecycle": "Released",
+  "description": "Tenant-per-DB izolasyon; tüm özelleştirme tenant katmanında, core şema değişmez.",
+  "cli": {
+    "tool": "tenant.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "metrics",
+      "items": [
+        {
+          "label": "tenant",
+          "value": "3",
+          "sub": ""
+        },
+        {
+          "label": "MAU",
+          "value": "4.2K",
+          "sub": ""
+        },
+        {
+          "label": "QPS",
+          "value": "169",
+          "sub": ""
+        },
+        {
+          "label": "hata",
+          "value": "%0.21",
+          "sub": ""
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "columns": [
+        "tenant",
+        "edition",
+        "bölge",
+        "DB",
+        "pin"
+      ],
+      "rows": [
+        [
+          "acme",
+          "enterprise",
+          "eu-central",
+          "1.2 GB",
+          "listing-flow v2"
+        ],
+        [
+          "globex",
+          "lite",
+          "eu-central",
+          "310 MB",
+          "güncel"
+        ],
+        [
+          "initech",
+          "standard",
+          "tr-ist",
+          "88 MB",
+          "güncel"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "danger",
+      "icon": "Lock",
+      "text": "Prod: tenant reset/drop kilitli — ECA kuralı R-prod-lock.",
+      "when": "env == production"
+    }
+  ]
+}

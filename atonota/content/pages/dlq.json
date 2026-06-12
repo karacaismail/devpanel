@@ -1,0 +1,57 @@
+{
+  "id": "dlq",
+  "title": "Outbox / DLQ",
+  "group": "Gözlemle",
+  "icon": "Inbox",
+  "lifecycle": "Released",
+  "description": "Teslim edilemeyen event'ler — tek tık yeniden işle; mail zinciri sağlığı.",
+  "cli": {
+    "tool": "dlq.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "event",
+        "tüketen",
+        "neden",
+        "yaş"
+      ],
+      "rows": [
+        [
+          "invoice.create v2",
+          "billing",
+          "şema uyuşmazlığı",
+          "2s 14d"
+        ],
+        [
+          "order.completed v2",
+          "loyalty-points",
+          "sandbox stopped",
+          "41d"
+        ]
+      ]
+    },
+    {
+      "type": "progress",
+      "items": [
+        {
+          "label": "primary-smtp",
+          "value": 99,
+          "sub": "%99.2",
+          "tone": "ok"
+        },
+        {
+          "label": "fallback-api",
+          "value": 98,
+          "sub": "%97.8",
+          "tone": "warn"
+        }
+      ],
+      "title": "Mail zinciri sağlığı"
+    }
+  ]
+}

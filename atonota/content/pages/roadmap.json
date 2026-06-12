@@ -1,0 +1,61 @@
+{
+  "id": "roadmap",
+  "title": "Roadmap",
+  "group": "Kontrol Et",
+  "icon": "Map",
+  "lifecycle": "Released",
+  "description": "Issue'lardan beslenen yol haritası — oylar önceliklendirir.",
+  "cli": {
+    "tool": "roadmap.read",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "kanban",
+      "columns": [
+        {
+          "title": "Keşif",
+          "items": [
+            {
+              "label": "Çoklu dil içerik alanları",
+              "badge": "9 oy",
+              "badgeTone": "outline"
+            }
+          ]
+        },
+        {
+          "title": "Planlandı",
+          "items": [
+            {
+              "label": "asOf zaman gezgini",
+              "badge": "14 oy",
+              "badgeTone": "outline"
+            }
+          ]
+        },
+        {
+          "title": "Yapılıyor",
+          "items": [
+            {
+              "label": "Surface alan grubu",
+              "badge": "11 oy",
+              "badgeTone": "default"
+            }
+          ]
+        },
+        {
+          "title": "Yayında",
+          "items": [
+            {
+              "label": "AI triage",
+              "badge": "18 oy",
+              "badgeTone": "success"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "settings",
+  "title": "Settings",
+  "group": "Platform",
+  "icon": "Settings",
+  "lifecycle": "Released",
+  "description": "Kurulum anahtarları app.yaml'a yazılır; kilitli kararlar gerekçeli görünür.",
+  "cli": {
+    "tool": "app.config",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "keyvalue",
+      "items": [
+        {
+          "k": "login deneme limiti",
+          "v": "5 / 15dk"
+        },
+        {
+          "k": "parola politikası",
+          "v": "min 12 · MFA zorunlu"
+        },
+        {
+          "k": "telemetri",
+          "v": "kapalı — kilitli (ADR-0006)"
+        },
+        {
+          "k": "varsayılan retention",
+          "v": "P5Y"
+        },
+        {
+          "k": "panel dili",
+          "v": "Türkçe"
+        }
+      ],
+      "title": "Güvenlik politikaları & varsayılanlar"
+    }
+  ]
+}

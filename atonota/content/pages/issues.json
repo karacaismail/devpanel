@@ -1,0 +1,51 @@
+{
+  "id": "issues",
+  "title": "Issues",
+  "group": "Kontrol Et",
+  "icon": "Bug",
+  "lifecycle": "Released",
+  "description": "AI triage'lı iş takibi — change-set üzerinden release changelog'una akar.",
+  "cli": {
+    "tool": "issue.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "id",
+        "başlık",
+        "şiddet",
+        "durum"
+      ],
+      "rows": [
+        [
+          "BUG-141",
+          "PII maskesi CSV'de açık bırakıyor",
+          "high",
+          "açık"
+        ],
+        [
+          "FTR-58",
+          "Surface alan grubu desteği",
+          "low",
+          "çalışılıyor"
+        ],
+        [
+          "BUG-137",
+          "Webhook imza saat farkı 500",
+          "critical",
+          "kapandı"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "ok",
+      "icon": "Wand2",
+      "text": "AI triage önerir, geliştirici karar verir; hata grupları tek tıkla issue olur."
+    }
+  ]
+}

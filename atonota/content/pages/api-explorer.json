@@ -1,0 +1,45 @@
+{
+  "id": "api-explorer",
+  "title": "API Explorer",
+  "group": "Yürüt",
+  "icon": "FileCode",
+  "lifecycle": "Released",
+  "description": "GraphQL playground + REST/OpenAPI + şema pinleme; copy-as-curl + sorgu geçmişi.",
+  "cli": {
+    "tool": "api.query",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "code",
+      "code": "query Parties {\n  parties(filter: { status: active }) {\n    id\n    email      # maskeli döner\n  }\n}"
+    },
+    {
+      "type": "table",
+      "columns": [
+        "method",
+        "path",
+        "açıklama"
+      ],
+      "rows": [
+        [
+          "GET",
+          "/api/party",
+          "liste (RLS + maskeli)"
+        ],
+        [
+          "POST",
+          "/api/party",
+          "oluştur (audit)"
+        ],
+        [
+          "GET",
+          "/api/listing",
+          "bitemporal asOf"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+{
+  "groups": [
+    {
+      "label": "Genel Bakış",
+      "icon": "Compass",
+      "items": [
+        {
+          "label": "Dashboard",
+          "page": "dashboard",
+          "icon": "LayoutDashboard"
+        },
+        {
+          "label": "AI İçgörüler",
+          "page": "insights",
+          "icon": "Sparkles"
+        },
+        {
+          "label": "Eğitim Yolu",
+          "page": "learn",
+          "icon": "GraduationCap"
+        },
+        {
+          "label": "Aktivite & Audit",
+          "page": "activity",
+          "icon": "Activity"
+        },
+        {
+          "label": "Bildirimler",
+          "page": "notifications",
+          "icon": "Bell"
+        },
+        {
+          "label": "Dokümantasyon",
+          "page": "docs",
+          "icon": "BookOpen"
+        }
+      ]
+    },
+    {
+      "label": "Tasarla",
+      "icon": "PencilRuler",
+      "items": [
+        {
+          "label": "Şema Tasarımcısı",
+          "page": "schema",
+          "icon": "Database"
+        },
+        {
+          "label": "ArcheType Studio",
+          "page": "archetype",
+          "icon": "Boxes"
+        },
+        {
+          "label": "Fragment Kitaplığı",
+          "page": "fragments",
+          "icon": "Component"
+        },
+        {
+          "label": "Form Builder",
+          "page": "forms",
+          "icon": "Layers"
+        },
+        {
+          "label": "Surface & Edition",
+          "page": "surface",
+          "icon": "Layers"
+        },
+        {
+          "label": "Workflow Designer",
+          "page": "workflows",
+          "icon": "GitMerge"
+        },
+        {
+          "label": "ERD Haritası",
+          "page": "erd",
+          "icon": "Share2"
+        },
+        {
+          "label": "Domain & Contract",
+          "page": "domains",
+          "icon": "Network"
+        },
+        {
+          "label": "Module Manager",
+          "page": "modules",
+          "icon": "Puzzle"
+        },
+        {
+          "label": "Portföy & Bağımlılıklar",
+          "page": "dependencies",
+          "icon": "Waypoints"
+        },
+        {
+          "label": "Tema / Token",
+          "page": "theme",
+          "icon": "Palette"
+        },
+        {
+          "label": "Code Editor",
+          "page": "code-editor",
+          "icon": "Braces"
+        },
+        {
+          "label": "E-posta Şablonları",
+          "page": "email-templates",
+          "icon": "Mail"
+        }
+      ]
+    },
+    {
+      "label": "Yürüt",
+      "icon": "Rocket",
+      "items": [
+        {
+          "label": "Tenant & Siteler",
+          "page": "tenants",
+          "icon": "Building2"
+        },
+        {
+          "label": "Data Browser",
+          "page": "data",
+          "icon": "Table2"
+        },
+        {
+          "label": "Migration Paneli",
+          "page": "migration",
+          "icon": "GitMerge"
+        },
+        {
+          "label": "API Explorer",
+          "page": "api-explorer",
+          "icon": "FileCode"
+        },
+        {
+          "label": "Event Kataloğu",
+          "page": "events",
+          "icon": "Radio"
+        },
+        {
+          "label": "Webhooks",
+          "page": "webhooks",
+          "icon": "Webhook"
+        },
+        {
+          "label": "Media",
+          "page": "media",
+          "icon": "Image"
+        },
+        {
+          "label": "Scheduler",
+          "page": "scheduler",
+          "icon": "Clock"
+        },
+        {
+          "label": "Ortam & Release",
+          "page": "deployments",
+          "icon": "Rocket"
+        },
+        {
+          "label": "Ortamlar",
+          "page": "environments",
+          "icon": "Layers"
+        },
+        {
+          "label": "Veritabanları",
+          "page": "databases",
+          "icon": "Database"
+        },
+        {
+          "label": "Sunucu Filosu",
+          "page": "infrastructure",
+          "icon": "Server"
+        },
+        {
+          "label": "Depolama, CDN & Ağ",
+          "page": "network",
+          "icon": "HardDrive"
+        }
+      ]
+    },
+    {
+      "label": "Gözlemle",
+      "icon": "Activity",
+      "items": [
+        {
+          "label": "Loglar",
+          "page": "logs",
+          "icon": "ScrollText"
+        },
+        {
+          "label": "Trace'ler",
+          "page": "traces",
+          "icon": "Waypoints"
+        },
+        {
+          "label": "Outbox / DLQ",
+          "page": "dlq",
+          "icon": "Inbox"
+        },
+        {
+          "label": "Uyarılar",
+          "page": "alerts",
+          "icon": "BellRing"
+        },
+        {
+          "label": "Health",
+          "page": "health",
+          "icon": "Heartbeat"
+        },
+        {
+          "label": "Metrikler & Raporlar",
+          "page": "reports",
+          "icon": "BarChart3"
+        },
+        {
+          "label": "Terminal",
+          "page": "terminal",
+          "icon": "TerminalSquare"
+        },
+        {
+          "label": "Hata Takibi",
+          "page": "errors",
+          "icon": "Bug"
+        }
+      ]
+    },
+    {
+      "label": "Kontrol Et",
+      "icon": "ShieldCheck",
+      "items": [
+        {
+          "label": "Test Runner",
+          "page": "test-runner",
+          "icon": "FlaskConical"
+        },
+        {
+          "label": "Yönetişim & Kalite",
+          "page": "governance",
+          "icon": "Landmark"
+        },
+        {
+          "label": "Issues",
+          "page": "issues",
+          "icon": "Bug"
+        },
+        {
+          "label": "Roadmap",
+          "page": "roadmap",
+          "icon": "Map"
+        },
+        {
+          "label": "WBS / Backlog",
+          "page": "wbs",
+          "icon": "ListTree"
+        },
+        {
+          "label": "Permissions",
+          "page": "permissions",
+          "icon": "ShieldCheck"
+        },
+        {
+          "label": "Kimlik & Oturumlar",
+          "page": "identity",
+          "icon": "Fingerprint"
+        },
+        {
+          "label": "Sırlar",
+          "page": "secrets",
+          "icon": "Lock"
+        },
+        {
+          "label": "API Keys",
+          "page": "api-keys",
+          "icon": "KeyRound"
+        }
+      ]
+    },
+    {
+      "label": "AI",
+      "icon": "Wand2",
+      "items": [
+        {
+          "label": "AI Copilot",
+          "page": "ai-copilot",
+          "icon": "Terminal"
+        },
+        {
+          "label": "AI Simülasyonları",
+          "page": "ai-simulations",
+          "icon": "Sparkles"
+        },
+        {
+          "label": "AI Katmanı (Gateway)",
+          "page": "ai-platform",
+          "icon": "Cpu"
+        },
+        {
+          "label": "Agent Yetkileri",
+          "page": "capabilities",
+          "icon": "Bot"
+        },
+        {
+          "label": "Agent Runs",
+          "page": "agent-runs",
+          "icon": "Bot"
+        },
+        {
+          "label": "Vektör Depoları",
+          "page": "vectors",
+          "icon": "Boxes"
+        }
+      ]
+    },
+    {
+      "label": "Gelir",
+      "icon": "CircleDollarSign",
+      "items": [
+        {
+          "label": "Pazar Yeri",
+          "page": "marketplace",
+          "icon": "Store"
+        },
+        {
+          "label": "Yayıncı Paneli",
+          "page": "publisher",
+          "icon": "Megaphone"
+        },
+        {
+          "label": "Faturalama & Ölçümleme",
+          "page": "billing",
+          "icon": "CircleDollarSign"
+        }
+      ]
+    },
+    {
+      "label": "Platform",
+      "icon": "Cog",
+      "items": [
+        {
+          "label": "Engines & Adapters",
+          "page": "platform",
+          "icon": "Cog"
+        },
+        {
+          "label": "Team",
+          "page": "team",
+          "icon": "Users"
+        },
+        {
+          "label": "Settings",
+          "page": "settings",
+          "icon": "Settings"
+        }
+      ],
+      "minRole": "platform-ops"
+    }
+  ]
+}

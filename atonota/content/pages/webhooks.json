@@ -1,0 +1,45 @@
+{
+  "id": "webhooks",
+  "title": "Webhooks",
+  "group": "Yürüt",
+  "icon": "Webhook",
+  "lifecycle": "Released",
+  "description": "Event aboneliği + teslimat geçmişi + test gönderimi (imzalı).",
+  "cli": {
+    "tool": "webhook.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "abonelik",
+        "url",
+        "event",
+        "teslimat"
+      ],
+      "rows": [
+        [
+          "billing-sync",
+          "erp.acme.example/hooks",
+          "order.completed",
+          "3/4 ✓"
+        ],
+        [
+          "search-reindex",
+          "search.internal",
+          "listing.published",
+          "2/2 ✓"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "icon": "Webhook",
+      "text": "İmza anahtarı maskeli (whsec_…); teslimat başarısızlıkları DLQ'ya düşer."
+    }
+  ]
+}

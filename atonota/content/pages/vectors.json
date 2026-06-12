@@ -1,0 +1,45 @@
+{
+  "id": "vectors",
+  "title": "Vektör Depoları",
+  "group": "AI",
+  "icon": "Boxes",
+  "lifecycle": "Staged",
+  "description": "Embedding pipeline'ları + benzerlik araması — PII alanları maskelenerek girer.",
+  "cli": {
+    "tool": "vector.query",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "depo",
+        "model",
+        "vektör",
+        "tazelik"
+      ],
+      "rows": [
+        [
+          "docs-embeddings",
+          "text-embedding-3-small",
+          "12.480",
+          "%98"
+        ],
+        [
+          "party-similarity",
+          "local-minilm",
+          "48.200",
+          "%100"
+        ],
+        [
+          "issue-dedup",
+          "text-embedding-3-small",
+          "1.430",
+          "%100"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "erd",
+  "title": "ERD — Şema Haritası",
+  "group": "Tasarla",
+  "icon": "Share2",
+  "lifecycle": "Released",
+  "description": "İlişkiler ref(...) alanlarından türetilir; diyagram düzenlenmez, tanım düzenlenir.",
+  "cli": {
+    "tool": "erd.read",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "ilişki",
+        "kaynak → hedef",
+        "durum"
+      ],
+      "rows": [
+        [
+          "seller",
+          "listing → party",
+          "ok"
+        ],
+        [
+          "buyer",
+          "order → party",
+          "ok"
+        ],
+        [
+          "customer",
+          "invoice → ghost",
+          "kırık ⚠"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "danger",
+      "icon": "AlertTriangle",
+      "text": "1 kırık ilişki: invoice.customer → ghost? — Contract tanımı gerekli."
+    }
+  ]
+}

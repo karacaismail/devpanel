@@ -1,0 +1,64 @@
+{
+  "id": "infrastructure",
+  "title": "Sunucu Filosu",
+  "group": "Yürüt",
+  "icon": "Server",
+  "lifecycle": "Released",
+  "description": "Bölge/plan/kullanım; ölçekleme kuralları tanımdan yönetilir.",
+  "cli": {
+    "tool": "infra.fleet",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "sunucu",
+        "bölge",
+        "plan",
+        "durum"
+      ],
+      "rows": [
+        [
+          "fra-app-01",
+          "eu-central",
+          "EPYC 16c/64GB",
+          "ok"
+        ],
+        [
+          "fra-db-01",
+          "eu-central",
+          "EPYC 8c/64GB",
+          "ok"
+        ],
+        [
+          "fra-worker-02",
+          "eu-central",
+          "4c/16GB",
+          "degraded ⚠"
+        ]
+      ]
+    },
+    {
+      "type": "progress",
+      "items": [
+        {
+          "label": "fra-app-01 CPU",
+          "value": 38
+        },
+        {
+          "label": "fra-db-01 bellek",
+          "value": 71,
+          "tone": "warn"
+        },
+        {
+          "label": "fra-worker-02 CPU",
+          "value": 84,
+          "tone": "danger"
+        }
+      ]
+    }
+  ]
+}

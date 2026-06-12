@@ -1,0 +1,66 @@
+{
+  "id": "identity",
+  "title": "Kimlik & Oturumlar",
+  "group": "Kontrol Et",
+  "icon": "Fingerprint",
+  "lifecycle": "Staged",
+  "description": "OAuth istemcileri, IdP (OIDC/SAML/LDAP), oturumlar — MFA org genelinde zorunlu.",
+  "cli": {
+    "tool": "identity.providers",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "sağlayıcı",
+        "tür",
+        "kullanıcı",
+        "durum"
+      ],
+      "rows": [
+        [
+          "acme-azuread",
+          "OIDC",
+          "41",
+          "aktif"
+        ],
+        [
+          "globex-okta",
+          "SAML",
+          "12",
+          "aktif"
+        ],
+        [
+          "legacy-ldap",
+          "LDAP federation",
+          "7",
+          "salt-okunur"
+        ]
+      ]
+    },
+    {
+      "type": "table",
+      "columns": [
+        "oturum",
+        "cihaz",
+        "MFA"
+      ],
+      "rows": [
+        [
+          "ismail",
+          "MacBook · Safari",
+          "✓"
+        ],
+        [
+          "vibebot (agent)",
+          "MCP oturumu",
+          "—"
+        ]
+      ],
+      "title": "Canlı oturumlar"
+    }
+  ]
+}

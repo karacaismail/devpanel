@@ -1,0 +1,68 @@
+{
+  "id": "archetype",
+  "title": "ArcheType Studio",
+  "group": "Tasarla",
+  "icon": "Boxes",
+  "lifecycle": "Draft",
+  "description": "Bayraklar (pii/bitemporal/retention/audit) neyin doğacağını belirler.",
+  "cli": {
+    "tool": "archetype.read",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "keyvalue",
+      "items": [
+        {
+          "k": "scope",
+          "v": "kernel"
+        },
+        {
+          "k": "pii",
+          "v": "true"
+        },
+        {
+          "k": "bitemporal",
+          "v": "false"
+        },
+        {
+          "k": "retention",
+          "v": "P5Y"
+        },
+        {
+          "k": "audit",
+          "v": "true"
+        }
+      ],
+      "title": "party bayrakları"
+    },
+    {
+      "type": "table",
+      "columns": [
+        "doğurduğu",
+        "değer"
+      ],
+      "rows": [
+        [
+          "tablo",
+          "ten_party (RLS)"
+        ],
+        [
+          "GraphQL",
+          "party · parties · partyCreate"
+        ],
+        [
+          "MCP tool",
+          "archetype.party.crud"
+        ],
+        [
+          "testler",
+          "contract · rls · pii-mask"
+        ]
+      ],
+      "title": "Doğurdukları"
+    }
+  ]
+}

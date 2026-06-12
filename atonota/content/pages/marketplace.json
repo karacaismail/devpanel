@@ -1,0 +1,51 @@
+{
+  "id": "marketplace",
+  "title": "Pazar Yeri",
+  "group": "Gelir",
+  "icon": "Store",
+  "lifecycle": "Staged",
+  "description": "Üçüncü-taraf uygulama vitrini + otomatik kontrol + manuel onaylı inceleme kuyruğu.",
+  "cli": {
+    "tool": "marketplace.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "uygulama",
+        "kategori",
+        "puan",
+        "fiyat"
+      ],
+      "rows": [
+        [
+          "SEO Meta",
+          "raporlama",
+          "4.6",
+          "ücretsiz"
+        ],
+        [
+          "e-Fatura TR",
+          "muhasebe",
+          "4.8",
+          "₺490/ay"
+        ],
+        [
+          "AI Descriptions",
+          "ai",
+          "4.1",
+          "freemium"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "icon": "ShieldCheck",
+      "text": "Her uygulama izin beyanıyla gelir, WASM sandbox'ta koşar; inceleme SLA'sı 10 gün."
+    }
+  ]
+}

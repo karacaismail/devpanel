@@ -1,0 +1,62 @@
+{
+  "id": "dependencies",
+  "title": "Portföy & Bağımlılıklar",
+  "group": "Tasarla",
+  "icon": "Waypoints",
+  "lifecycle": "Released",
+  "description": "Kaldırma sırası ve etki analizi — program/ürün ailesi/ownership.",
+  "cli": {
+    "tool": "module.deps",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "modül",
+        "bağımlılıkları",
+        "etki"
+      ],
+      "rows": [
+        [
+          "core",
+          "—",
+          "6 modül buna bağımlı — kaldırılamaz"
+        ],
+        [
+          "sales",
+          "core, identity",
+          "2 bağımlı"
+        ],
+        [
+          "fraud-guard",
+          "sales",
+          "güvenle kaldırılabilir"
+        ]
+      ]
+    },
+    {
+      "type": "cards",
+      "cols": 3,
+      "items": [
+        {
+          "title": "program",
+          "icon": "Compass",
+          "body": "SaaS Suite 2030 · owner ismail"
+        },
+        {
+          "title": "ürün aileleri",
+          "icon": "Boxes",
+          "body": "CRM · HRMS · Commerce"
+        },
+        {
+          "title": "ownership",
+          "icon": "Users",
+          "body": "sahipsiz düğüm yok ✓"
+        }
+      ]
+    }
+  ]
+}

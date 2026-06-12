@@ -1,0 +1,39 @@
+{
+  "id": "errors",
+  "title": "Hata Takibi",
+  "group": "Gözlemle",
+  "icon": "Bug",
+  "lifecycle": "Released",
+  "description": "Hata grupları + stack trace + etkilenen tenant — Issues'a issue üretilebilir.",
+  "cli": {
+    "tool": "error.groups",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "hata",
+        "sayı",
+        "son",
+        "etkilenen"
+      ],
+      "rows": [
+        [
+          "TypeError: cannot read 'edition'",
+          "23",
+          "12d",
+          "forms/preview"
+        ],
+        [
+          "GraphQL timeout >5s",
+          "6",
+          "1s",
+          "tenant globex"
+        ]
+      ]
+    }
+  ]
+}

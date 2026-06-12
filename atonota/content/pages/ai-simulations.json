@@ -1,0 +1,37 @@
+{
+  "id": "ai-simulations",
+  "title": "AI Simülasyonları",
+  "group": "AI",
+  "icon": "Sparkles",
+  "lifecycle": "Staged",
+  "description": "Altı deterministik AI akışı — hepsi diff/önizleme üretir, sormadan yazmaz.",
+  "cli": {
+    "tool": "ai.simulate",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "cards",
+      "cols": 3,
+      "items": [
+        {
+          "title": "Şema üretici",
+          "icon": "Database",
+          "body": "doğal dil → modül taslağı (test İLK)"
+        },
+        {
+          "title": "Log anomali özeti",
+          "icon": "ScrollText",
+          "body": "842 satır → 4 bulgu"
+        },
+        {
+          "title": "Kontrat testi üretici",
+          "icon": "FlaskConical",
+          "body": "kırmızı başlayan iskelet"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "team",
+  "title": "Team",
+  "group": "Platform",
+  "icon": "Users",
+  "lifecycle": "Released",
+  "description": "İnsanlar + agent'lar aynı listede — agent yetkisi scope'la sınırlı.",
+  "cli": {
+    "tool": "team.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "üye",
+        "rol",
+        "scope",
+        "son"
+      ],
+      "rows": [
+        [
+          "ismail",
+          "owner/developer",
+          "tam yetki",
+          "çevrimiçi"
+        ],
+        [
+          "bora",
+          "developer",
+          "tanım katmanı",
+          "1s önce"
+        ],
+        [
+          "vibebot",
+          "agent (MCP)",
+          "party.read · scaffold",
+          "11:42"
+        ]
+      ]
+    }
+  ]
+}

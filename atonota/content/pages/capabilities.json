@@ -1,0 +1,47 @@
+{
+  "id": "capabilities",
+  "title": "Agent Yetkileri",
+  "group": "AI",
+  "icon": "Bot",
+  "lifecycle": "Released",
+  "description": "MCP tool kataloğu + capability scope + canlı blast-radius hesabı.",
+  "cli": {
+    "tool": "agent.scope.set",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "scope",
+        "yazma",
+        "tablolar"
+      ],
+      "rows": [
+        [
+          "party.read",
+          "—",
+          "ten_party"
+        ],
+        [
+          "scaffold",
+          "—",
+          "—"
+        ],
+        [
+          "ledger.write",
+          "✓",
+          "ten_loyalty_ledger"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "danger",
+      "icon": "ShieldAlert",
+      "text": "Blast-radius: geniş yarıçap (3+ tablo yazma) isim-yazarak ek onay ister."
+    }
+  ]
+}

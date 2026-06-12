@@ -1,0 +1,49 @@
+{
+  "id": "learn",
+  "title": "Eğitim Yolu",
+  "group": "Genel Bakış",
+  "icon": "GraduationCap",
+  "lifecycle": "Released",
+  "description": "Jr-öncesi vibecoder turu — amaç AI'ın ürettiğini anlayıp onaylamak.",
+  "cli": {
+    "tool": "learn.status",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "progress",
+      "items": [
+        {
+          "label": "İlerleme",
+          "value": 33,
+          "sub": "2/6 adım"
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "items": [
+        {
+          "label": "Granülerlik dilini öğren",
+          "note": "Dağ → Çakıl cetveli",
+          "done": true
+        },
+        {
+          "label": "İlk scaffold önizlemen",
+          "note": "test dosyası İLK üretilir",
+          "done": true
+        },
+        {
+          "label": "Şema bayraklarını incele",
+          "note": "pii/retention/audit"
+        },
+        {
+          "label": "Kırmızı testi oku",
+          "note": "telafi eksiği neden kilitler?"
+        }
+      ]
+    }
+  ]
+}

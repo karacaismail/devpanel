@@ -1,0 +1,26 @@
+{
+  "id": "code-editor",
+  "title": "Code Editor",
+  "group": "Tasarla",
+  "icon": "Braces",
+  "lifecycle": "Released",
+  "description": "Ham JSON/script görünümü — tanım her zaman bir toggle uzakta; satır içi AI kod asistanı.",
+  "cli": {
+    "tool": "def.edit",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "code",
+      "code": "{\n  \"tenant\": \"acme\",\n  \"tokens\": { \"accent\": \"#6366f1\" }\n}"
+    },
+    {
+      "type": "callout",
+      "tone": "ok",
+      "icon": "CheckCircle",
+      "text": "Geçersiz JSON reddedilir; geçerli JSON biçimlenir. Kaydet = diff onayı (tanım kazanır)."
+    }
+  ]
+}

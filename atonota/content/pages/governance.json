@@ -1,0 +1,98 @@
+{
+  "id": "governance",
+  "title": "Yönetişim & Kalite",
+  "group": "Kontrol Et",
+  "icon": "Landmark",
+  "lifecycle": "Released",
+  "description": "Şelale kontrol katmanı: REQ → ADR → RTM → test kanıtı → release zinciri.",
+  "cli": {
+    "tool": "governance.rtm",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "badges",
+      "items": [
+        {
+          "label": "Need confirmed",
+          "tone": "success"
+        },
+        {
+          "label": "Requirements baseline",
+          "tone": "success"
+        },
+        {
+          "label": "Architecture review",
+          "tone": "success"
+        },
+        {
+          "label": "Metadata/UI freeze",
+          "tone": "warning"
+        },
+        {
+          "label": "Test readiness",
+          "tone": "outline"
+        },
+        {
+          "label": "Production promotion",
+          "tone": "outline"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "columns": [
+        "requirement",
+        "tasarım",
+        "test",
+        "release",
+        "zincir"
+      ],
+      "rows": [
+        [
+          "REQ-112",
+          "ADR-0007",
+          "party.rls.test.ts",
+          "v0.9.3",
+          "tam"
+        ],
+        [
+          "REQ-114",
+          "ADR-0010",
+          "pii-mask.test.ts",
+          "v0.9.3",
+          "tam"
+        ],
+        [
+          "REQ-121",
+          "ADR-0008",
+          "—",
+          "—",
+          "eksik halka ⚠"
+        ]
+      ]
+    },
+    {
+      "type": "cards",
+      "cols": 2,
+      "items": [
+        {
+          "title": "Deviation/Waiver",
+          "icon": "AlertTriangle",
+          "body": "WVR-3: telafi eksiğiyle staging — prod'a taşınamaz",
+          "badge": "2026-06-20",
+          "badgeTone": "warning"
+        },
+        {
+          "title": "Design Baseline",
+          "icon": "Landmark",
+          "body": "baseline-2026.05.20 (42 model)",
+          "badge": "onaylı",
+          "badgeTone": "success"
+        }
+      ]
+    }
+  ]
+}

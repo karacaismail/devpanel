@@ -1,0 +1,44 @@
+{
+  "id": "reports",
+  "title": "Metrikler & Raporlar",
+  "group": "Gözlemle",
+  "icon": "BarChart3",
+  "lifecycle": "Released",
+  "description": "grupla/say + bar grafik + özel pano oluşturucu.",
+  "cli": {
+    "tool": "report.run",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "progress",
+      "items": [
+        {
+          "label": "active",
+          "value": 61,
+          "sub": "612"
+        },
+        {
+          "label": "passive",
+          "value": 24,
+          "sub": "240"
+        },
+        {
+          "label": "blocked",
+          "value": 15,
+          "sub": "148",
+          "tone": "danger"
+        }
+      ],
+      "title": "Durum dağılımı (party)"
+    },
+    {
+      "type": "callout",
+      "tone": "ok",
+      "icon": "BarChart3",
+      "text": "Özel pano oluşturucu: dataset/metric/dimension/filter + doğal dil sorgu (AI, diff ile)."
+    }
+  ]
+}

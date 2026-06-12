@@ -1,0 +1,46 @@
+{
+  "id": "activity",
+  "title": "Aktivite & Audit",
+  "group": "Genel Bakış",
+  "icon": "Activity",
+  "lifecycle": "Released",
+  "description": "Panel ve agent aksiyonlarının değiştirilemez kaydı; agent aksiyonları işaretli.",
+  "cli": {
+    "tool": "audit.tail",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "zaman",
+        "aktör",
+        "aksiyon",
+        "CLI eşdeğeri"
+      ],
+      "rows": [
+        [
+          "14:08",
+          "vibebot (MCP)",
+          "order scaffold önizlemesi",
+          "sdk scaffold --name order --test-first"
+        ],
+        [
+          "13:54",
+          "ismail",
+          "acme token güncellendi (AA ✓)",
+          "sdk theme apply --tenant acme"
+        ],
+        [
+          "13:31",
+          "ismail",
+          "Loyalty Points etkinleştirildi",
+          "sdk module enable --id loyalty-points"
+        ]
+      ],
+      "title": "Append-only denetim akışı"
+    }
+  ]
+}

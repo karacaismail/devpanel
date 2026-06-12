@@ -1,0 +1,22 @@
+{
+  "rules": [
+    {
+      "id": "R-prod-lock",
+      "when": "env == production",
+      "then": "lock:destructive",
+      "note": "Üretimde geri-alınamaz eylemler kilitli; isim-yazarak + çift imza gerekir."
+    },
+    {
+      "id": "R-viewer-readonly",
+      "when": "role == viewer",
+      "then": "lock:write",
+      "note": "viewer rolü salt-okunur."
+    },
+    {
+      "id": "R-staging-banner",
+      "when": "env == staging",
+      "then": "show:stagingNote",
+      "note": "Staging'de mail catcher aktif."
+    }
+  ]
+}

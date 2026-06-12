@@ -1,0 +1,40 @@
+{
+  "id": "traces",
+  "title": "Trace'ler",
+  "group": "Gözlemle",
+  "icon": "Waypoints",
+  "lifecycle": "Released",
+  "description": "OpenTelemetry üçlüsünün üçüncü ayağı — span ağacı + gecikme dağılımı.",
+  "cli": {
+    "tool": "trace.get",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "metrics",
+      "items": [
+        {
+          "label": "p50",
+          "value": "84ms",
+          "sub": ""
+        },
+        {
+          "label": "p95",
+          "value": "410ms",
+          "sub": ""
+        },
+        {
+          "label": "p99",
+          "value": "2.3s",
+          "sub": ""
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "code": "tr-8f31  POST /api/order  412ms\n ├ auth.verify (JWT+RLS)      8ms\n ├ db.tx ten_orders INSERT   96ms\n └ webhook.dispatch          240ms"
+    }
+  ]
+}

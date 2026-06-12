@@ -1,0 +1,74 @@
+{
+  "id": "data",
+  "title": "Data Browser",
+  "group": "Yürüt",
+  "icon": "Table2",
+  "lifecycle": "Released",
+  "description": "Tenant-scoped veri gezgini (RLS farkındalıklı) — maskeli CSV export.",
+  "cli": {
+    "tool": "data.query",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "badges",
+      "items": [
+        {
+          "label": "tümü (1000)"
+        },
+        {
+          "label": "active (612)",
+          "tone": "success"
+        },
+        {
+          "label": "passive (240)"
+        },
+        {
+          "label": "blocked (148)",
+          "tone": "destructive"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "columns": [
+        "#",
+        "ad",
+        "e-posta",
+        "şehir",
+        "durum"
+      ],
+      "rows": [
+        [
+          "1",
+          "Ayşe Yılmaz",
+          "ay***@***.com",
+          "İstanbul",
+          "active"
+        ],
+        [
+          "4",
+          "Can Demir",
+          "ca***@***.com",
+          "Ankara",
+          "active"
+        ],
+        [
+          "9",
+          "Elif Kaya",
+          "el***@***.com",
+          "İzmir",
+          "blocked"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "icon": "ShieldAlert",
+      "text": "PII alanları maskeli; ham değer yalnız yetkili API'den, erişim günlüğüne yazılarak."
+    }
+  ]
+}

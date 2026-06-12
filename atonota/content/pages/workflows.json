@@ -1,0 +1,53 @@
+{
+  "id": "workflows",
+  "title": "Workflow Designer",
+  "group": "Tasarla",
+  "icon": "GitMerge",
+  "lifecycle": "Draft",
+  "description": "Durum makinesi — geçişler tanımdan; telafi (compensation) zorunlu alandır.",
+  "cli": {
+    "tool": "workflow.read",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "geçiş",
+        "rol",
+        "telafi"
+      ],
+      "rows": [
+        [
+          "draft → review",
+          "author",
+          "geri çek"
+        ],
+        [
+          "review → active",
+          "moderator",
+          "yayından kaldır"
+        ],
+        [
+          "active → sold",
+          "system",
+          "TANIMSIZ ⚠"
+        ],
+        [
+          "active → archived",
+          "owner",
+          "geri yükle"
+        ]
+      ],
+      "title": "listing-flow geçişleri"
+    },
+    {
+      "type": "callout",
+      "tone": "danger",
+      "icon": "AlertTriangle",
+      "text": "active → sold geçişinin telafisi tanımsız — bu tanım kaydedilemez (layer1-workflow)."
+    }
+  ]
+}

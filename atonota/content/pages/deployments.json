@@ -1,0 +1,47 @@
+{
+  "id": "deployments",
+  "title": "Ortam & Release",
+  "group": "Yürüt",
+  "icon": "Rocket",
+  "lifecycle": "Staged",
+  "description": "dev → staging → prod hattı; change-set'ler changelog olur, rollback tek tık.",
+  "cli": {
+    "tool": "deploy.run",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "cards",
+      "cols": 3,
+      "items": [
+        {
+          "title": "dev",
+          "icon": "Rocket",
+          "body": "{{env}} · build #321",
+          "badge": "yeşil",
+          "badgeTone": "success"
+        },
+        {
+          "title": "staging",
+          "icon": "Rocket",
+          "body": "release/1.0 · #319",
+          "badge": "yeşil",
+          "badgeTone": "success"
+        },
+        {
+          "title": "prod",
+          "icon": "Rocket",
+          "body": "main · v0.9.3",
+          "badge": "sağlıklı",
+          "badgeTone": "success"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "code": "Release Dossier v1.0.0\n  build #319 · checksum sha256:9f2a…c41\n  migration: q-7, q-8 (GUARD'lı)\n  rollback: #311 + DB snapshot 03:00\n  onaylar: mimari ✓ · release ✓ · güvenlik ◌ (1 imza eksik → kilitli)"
+    }
+  ]
+}

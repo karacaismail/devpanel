@@ -1,0 +1,43 @@
+{
+  "id": "fragments",
+  "title": "Fragment Kitaplığı",
+  "group": "Tasarla",
+  "icon": "Component",
+  "lifecycle": "Released",
+  "description": "Yeniden kullanılabilir alan grupları — bayraklar fragment'tan modüle miras kalır.",
+  "cli": {
+    "tool": "fragment.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "cards",
+      "cols": 3,
+      "items": [
+        {
+          "title": "address",
+          "icon": "Component",
+          "body": "line1 · line2? · city · postal_code · country",
+          "badge": "party, order",
+          "badgeTone": "outline"
+        },
+        {
+          "title": "money",
+          "icon": "Component",
+          "body": "amount · currency",
+          "badge": "listing, invoice",
+          "badgeTone": "outline"
+        },
+        {
+          "title": "contact",
+          "icon": "Component",
+          "body": "email · phone? (pii MİRAS kalır)",
+          "badge": "party",
+          "badgeTone": "outline"
+        }
+      ]
+    }
+  ]
+}

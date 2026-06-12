@@ -1,0 +1,78 @@
+{
+  "id": "ai-platform",
+  "title": "AI Katmanı (Gateway)",
+  "group": "AI",
+  "icon": "Cpu",
+  "lifecycle": "Staged",
+  "description": "Gateway, prompt registry, guardrails, maliyet — BYOK; otopilot prod'da kapalı.",
+  "cli": {
+    "tool": "ai.gateway.config",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "sağlayıcı",
+        "model",
+        "durum"
+      ],
+      "rows": [
+        [
+          "anthropic",
+          "claude-*",
+          "aktif"
+        ],
+        [
+          "openai",
+          "gpt-*",
+          "aktif"
+        ],
+        [
+          "local (ollama)",
+          "llama-*",
+          "yalnız dev"
+        ]
+      ]
+    },
+    {
+      "type": "table",
+      "columns": [
+        "kural",
+        "model",
+        "fallback"
+      ],
+      "rows": [
+        [
+          "şema/kod",
+          "claude-sonnet",
+          "gpt-4o"
+        ],
+        [
+          "özet/triage",
+          "claude-haiku",
+          "local"
+        ],
+        [
+          "guardrail",
+          "local",
+          "claude-haiku"
+        ]
+      ],
+      "title": "Model yönlendirme"
+    },
+    {
+      "type": "progress",
+      "items": [
+        {
+          "label": "bu ay (bütçe $120)",
+          "value": 65,
+          "sub": "$78.45",
+          "tone": "warn"
+        }
+      ]
+    }
+  ]
+}

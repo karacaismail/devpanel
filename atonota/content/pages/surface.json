@@ -1,0 +1,51 @@
+{
+  "id": "surface",
+  "title": "Surface & Edition",
+  "group": "Tasarla",
+  "icon": "Layers",
+  "lifecycle": "Staged",
+  "description": "Surface = projeksiyon; veri modeline dokunmaz. Headless anahtarı surface:none üretir.",
+  "cli": {
+    "tool": "surface.read",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "alan",
+        "görünür",
+        "widget"
+      ],
+      "rows": [
+        [
+          "display_name",
+          "✓",
+          "text"
+        ],
+        [
+          "email",
+          "✓",
+          "email"
+        ],
+        [
+          "phone",
+          "gizli",
+          "phone"
+        ],
+        [
+          "status",
+          "✓",
+          "select"
+        ]
+      ],
+      "title": "party-default projeksiyonu"
+    },
+    {
+      "type": "code",
+      "code": "# YAML patch\n~ phone.visible: false → true\nedition_overrides:\n  lite: { hidden: [phone, city] }\n  enterprise: { readonly: [status] }"
+    }
+  ]
+}

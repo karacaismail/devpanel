@@ -1,0 +1,62 @@
+{
+  "id": "test-runner",
+  "title": "Test Runner",
+  "group": "Kontrol Et",
+  "icon": "FlaskConical",
+  "lifecycle": "Released",
+  "description": "Üretilmiş kontrat testleri + sdk check; 'komşu tenant okuyamaz' vitrini.",
+  "cli": {
+    "tool": "check.run",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "metrics",
+      "items": [
+        {
+          "label": "yeşil",
+          "value": "37",
+          "sub": ""
+        },
+        {
+          "label": "kırmızı",
+          "value": "1",
+          "sub": ""
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "columns": [
+        "test",
+        "tür",
+        "sonuç"
+      ],
+      "rows": [
+        [
+          "party.contract.test.ts",
+          "kontrat",
+          "12 ✓"
+        ],
+        [
+          "listing.contract.test.ts",
+          "kontrat",
+          "9 ✓ · 1 ✗"
+        ],
+        [
+          "party.rls.test.ts",
+          "rls",
+          "6 ✓ — komşu tenant okuyamaz"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "danger",
+      "icon": "AlertTriangle",
+      "text": "Kırmızı test paneli kapatılamaz: listing-flow telafi tanımsız — scaffold/migration kilitli."
+    }
+  ]
+}

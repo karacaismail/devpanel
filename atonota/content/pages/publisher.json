@@ -1,0 +1,68 @@
+{
+  "id": "publisher",
+  "title": "Yayıncı Paneli",
+  "group": "Gelir",
+  "icon": "Megaphone",
+  "lifecycle": "Staged",
+  "description": "Uygulamalarım: yayın akışı + fiyatlandırma + abonelik + %80/20 ödemeler.",
+  "cli": {
+    "tool": "publisher.app",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "yayın",
+        "durum",
+        "not"
+      ],
+      "rows": [
+        [
+          "loyalty-points v1.5.0",
+          "Awaiting Approval",
+          "puan kuralları editörü"
+        ],
+        [
+          "v1.4.2",
+          "Approved",
+          "yayında — 1.240 site"
+        ],
+        [
+          "v1.4.0",
+          "Rejected",
+          "izin beyanı eksikti"
+        ]
+      ]
+    },
+    {
+      "type": "cards",
+      "cols": 3,
+      "items": [
+        {
+          "title": "Free",
+          "icon": "Megaphone",
+          "body": "1 site · topluluk",
+          "badge": "₺0",
+          "badgeTone": "outline"
+        },
+        {
+          "title": "Pro",
+          "icon": "Megaphone",
+          "body": "5 site",
+          "badge": "₺290/ay",
+          "badgeTone": "outline"
+        },
+        {
+          "title": "Scale",
+          "icon": "Megaphone",
+          "body": "sınırsız",
+          "badge": "₺990/ay",
+          "badgeTone": "outline"
+        }
+      ]
+    }
+  ]
+}

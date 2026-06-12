@@ -1,0 +1,82 @@
+{
+  "id": "dashboard",
+  "title": "{{org}} · Genel Bakış",
+  "group": "Genel Bakış",
+  "icon": "LayoutDashboard",
+  "lifecycle": "Released",
+  "description": "Tüm içerik content/*.json'dan engine ile gelir — bu sayfayı düzenlemek için kod değil JSON değişir.",
+  "cli": {
+    "tool": "console.overview",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "metrics",
+      "items": [
+        {
+          "label": "tenant",
+          "value": "3",
+          "sub": "1 kernel-paylaşımlı"
+        },
+        {
+          "label": "ortam",
+          "value": "{{env}}",
+          "sub": "aktif bağlam"
+        },
+        {
+          "label": "conformance",
+          "value": "✓",
+          "sub": "sdk check"
+        },
+        {
+          "label": "AI maliyet (ay)",
+          "value": "$78",
+          "sub": "bütçe $120"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "danger",
+      "icon": "ShieldAlert",
+      "text": "Production bağlamındasın — e-postalar gerçekten gönderilir, geri-alınamaz eylemler çift imza ister.",
+      "when": "env == production"
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "icon": "Mail",
+      "text": "Staging — mail catcher aktif, e-postalar yakalanır.",
+      "when": "env == staging"
+    },
+    {
+      "type": "cards",
+      "cols": 3,
+      "items": [
+        {
+          "title": "JSON Engine",
+          "icon": "Braces",
+          "body": "Sayfalar content/pages/*.json'dan parse edilir; {{token}} interpolasyonu + ECA kuralları runtime'da işler.",
+          "badge": "aktif",
+          "badgeTone": "success"
+        },
+        {
+          "title": "Bora Estetiği",
+          "icon": "Palette",
+          "body": "shadcn/ui (Radix + Tailwind), koyu neutral + indigo — Next.js değil, Vite.",
+          "badge": "shadcn",
+          "badgeTone": "outline"
+        },
+        {
+          "title": "AI-first",
+          "icon": "Bot",
+          "body": "Her sayfanın CLI/MCP eşdeğeri JSON'daki cli alanından üretilir.",
+          "badge": "UI=CLI=API",
+          "badgeTone": "outline"
+        }
+      ]
+    }
+  ]
+}

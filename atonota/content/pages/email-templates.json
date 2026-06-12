@@ -1,0 +1,26 @@
+{
+  "id": "email-templates",
+  "title": "E-posta Şablonları",
+  "group": "Tasarla",
+  "icon": "Mail",
+  "lifecycle": "Released",
+  "description": "{{değişken}} motoru + canlı önizleme — mail zinciri bu şablonları kullanır.",
+  "cli": {
+    "tool": "template.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "code",
+      "code": "Merhaba {{ad}},\n{{app}} hesabın hazır. Panele {{url}} adresinden gir.\n— {{app}} ekibi"
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "icon": "Mail",
+      "text": "Eksik değişken önizlemede gizlenmez, {{aynen}} görünür."
+    }
+  ]
+}

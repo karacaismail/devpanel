@@ -1,0 +1,51 @@
+{
+  "id": "agent-runs",
+  "title": "Agent Runs",
+  "group": "AI",
+  "icon": "Bot",
+  "lifecycle": "Released",
+  "description": "AI koşu geçmişi — adım adım tool çağrısı izli; geniş yetki insan onayında durur.",
+  "cli": {
+    "tool": "agent.runs",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "id",
+        "agent",
+        "istem",
+        "durum"
+      ],
+      "rows": [
+        [
+          "r-318",
+          "vibebot",
+          "party'ye segment alanı ekle",
+          "ok"
+        ],
+        [
+          "r-317",
+          "migration-reviewer",
+          "q-7 risk değerlendir",
+          "dry-run"
+        ],
+        [
+          "r-316",
+          "vibebot",
+          "tüm tenant'lara ledger yazma",
+          "fail ⚠"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "danger",
+      "icon": "ShieldAlert",
+      "text": "r-316 REDDEDİLDİ: geniş blast-radius — isim-yazarak insan onayı gerekli."
+    }
+  ]
+}

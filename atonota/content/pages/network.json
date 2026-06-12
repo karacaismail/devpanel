@@ -1,0 +1,60 @@
+{
+  "id": "network",
+  "title": "Depolama, CDN & Ağ",
+  "group": "Yürüt",
+  "icon": "HardDrive",
+  "lifecycle": "Released",
+  "description": "DNS, SSL, CDN/cache, bucket dökümü — sertifikalar otomatik yenilenir.",
+  "cli": {
+    "tool": "network.dns",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "tip",
+        "ad",
+        "değer",
+        "cdn"
+      ],
+      "rows": [
+        [
+          "A",
+          "panel.acme.example",
+          "188.40.x.x",
+          "proxy"
+        ],
+        [
+          "CNAME",
+          "cdn.acme.example",
+          "edge.atonota.net",
+          "proxy"
+        ]
+      ]
+    },
+    {
+      "type": "table",
+      "columns": [
+        "bucket",
+        "tür",
+        "boyut"
+      ],
+      "rows": [
+        [
+          "media-acme",
+          "onsite",
+          "4.1 GB"
+        ],
+        [
+          "backups-offsite",
+          "offsite (şifreli)",
+          "18.6 GB"
+        ]
+      ],
+      "title": "Depolama"
+    }
+  ]
+}

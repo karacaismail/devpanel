@@ -1,0 +1,65 @@
+{
+  "id": "modules",
+  "title": "Module Manager",
+  "group": "Tasarla",
+  "icon": "Puzzle",
+  "lifecycle": "Released",
+  "description": "Manifest/izin beyanı, WASM sandbox, registry — 'Chrome extension kadar basit'.",
+  "cli": {
+    "tool": "module.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "modül",
+        "versiyon",
+        "sandbox",
+        "lisans"
+      ],
+      "rows": [
+        [
+          "loyalty-points",
+          "1.4.2",
+          "running",
+          "MIT"
+        ],
+        [
+          "review-badges",
+          "0.9.0",
+          "stopped",
+          "MIT"
+        ],
+        [
+          "fraud-guard",
+          "2.1.0",
+          "blocked ⚠",
+          "Ticari"
+        ]
+      ]
+    },
+    {
+      "type": "cards",
+      "cols": 2,
+      "items": [
+        {
+          "title": "crm-starter",
+          "icon": "Puzzle",
+          "body": "Party, Deal, Pipeline",
+          "badge": "blueprint v2.1",
+          "badgeTone": "outline"
+        },
+        {
+          "title": "hrms-core",
+          "icon": "Puzzle",
+          "body": "Employee, Leave, Payroll",
+          "badge": "v1.4",
+          "badgeTone": "outline"
+        }
+      ]
+    }
+  ]
+}

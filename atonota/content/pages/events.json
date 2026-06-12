@@ -1,0 +1,49 @@
+{
+  "id": "events",
+  "title": "Event Kataloğu",
+  "group": "Yürüt",
+  "icon": "Radio",
+  "lifecycle": "Released",
+  "description": "Outbox event'leri — payload şeması sözleşmedir; kırıcı değişiklik yeni versiyon açar.",
+  "cli": {
+    "tool": "event.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "event",
+        "v",
+        "üreten",
+        "aboneler"
+      ],
+      "rows": [
+        [
+          "order.completed",
+          "2",
+          "sales",
+          "billing, loyalty-points"
+        ],
+        [
+          "party.merged",
+          "1",
+          "identity",
+          "search-index, sales"
+        ],
+        [
+          "listing.published",
+          "1",
+          "sales",
+          "search-index, seo-meta"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "code": "event: order.completed\nversion: 2\npayload:\n  order_id: { type: uuid, required: true }\n  settlement: { type: object }  # v2'de eklendi"
+    }
+  ]
+}

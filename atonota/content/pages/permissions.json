@@ -1,0 +1,53 @@
+{
+  "id": "permissions",
+  "title": "Permissions",
+  "group": "Kontrol Et",
+  "icon": "ShieldCheck",
+  "lifecycle": "Released",
+  "description": "RBAC + ABAC + ReBAC; İzin Değerlendirici (grant/deny simülasyonu).",
+  "cli": {
+    "tool": "role.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "rol \\ aksiyon",
+        "read",
+        "write",
+        "execute",
+        "configure"
+      ],
+      "rows": [
+        [
+          "admin (kilitli)",
+          "✓",
+          "✓",
+          "✓",
+          "✓"
+        ],
+        [
+          "developer",
+          "✓",
+          "✓",
+          "✓",
+          "—"
+        ],
+        [
+          "agent (MCP)",
+          "✓",
+          "—",
+          "✓",
+          "—"
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "code": "simulate(user=bora, resource=ten_party, action=write, env=prod)\n→ DENY · ABAC 'prod yazma = release-manager' (pol-114)"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "id": "schema",
+  "title": "Şema Tasarımcısı",
+  "group": "Tasarla",
+  "icon": "Database",
+  "lifecycle": "Draft",
+  "description": "ArcheType/DocType modelleri — tanım tek doğruluk kaynağı; AI şema üretici doğal dilden diff üretir.",
+  "cli": {
+    "tool": "schema.read",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "badges",
+      "items": [
+        {
+          "label": "String"
+        },
+        {
+          "label": "Integer"
+        },
+        {
+          "label": "Decimal"
+        },
+        {
+          "label": "DateTime"
+        },
+        {
+          "label": "JSON"
+        },
+        {
+          "label": "Boolean"
+        },
+        {
+          "label": "Enum"
+        },
+        {
+          "label": "Advanced Link (FK)"
+        },
+        {
+          "label": "Child Table"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "columns": [
+        "alan",
+        "tip",
+        "bayraklar"
+      ],
+      "rows": [
+        [
+          "display_name",
+          "string",
+          "required"
+        ],
+        [
+          "email",
+          "email",
+          "required · pii"
+        ],
+        [
+          "phone",
+          "phone",
+          "pii"
+        ],
+        [
+          "status",
+          "enum(active|passive|blocked)",
+          "required"
+        ],
+        [
+          "loyalty_tier",
+          "string",
+          "tenant-custom (E8)"
+        ]
+      ],
+      "title": "party (Büyük Taş · 13)"
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "icon": "ShieldAlert",
+      "text": "Yeni model anında yansımaz: Draft rozetiyle gelir, Request Approval ile staging'e itilir."
+    }
+  ]
+}

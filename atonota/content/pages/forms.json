@@ -1,0 +1,50 @@
+{
+  "id": "forms",
+  "title": "Form Builder",
+  "group": "Tasarla",
+  "icon": "Layers",
+  "lifecycle": "Draft",
+  "description": "Metadata-güdümlü form üreteci — kod değil layout metadatası.",
+  "cli": {
+    "tool": "form.read",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "cards",
+      "cols": 2,
+      "items": [
+        {
+          "title": "Smart Form Controller",
+          "icon": "Layers",
+          "body": "Yalnız model adını alır; alanları metadata'dan üretir."
+        },
+        {
+          "title": "Advanced Link Combobox",
+          "icon": "Search",
+          "body": "FK debounced arama — 312 eşleşme, 18ms."
+        }
+      ]
+    },
+    {
+      "type": "badges",
+      "items": [
+        {
+          "label": "mobil 390px"
+        },
+        {
+          "label": "tablet 834px"
+        },
+        {
+          "label": "masaüstü 1440px"
+        },
+        {
+          "label": "a11y AA ✓",
+          "tone": "success"
+        }
+      ]
+    }
+  ]
+}

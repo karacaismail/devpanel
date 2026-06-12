@@ -1,0 +1,63 @@
+{
+  "id": "theme",
+  "title": "Tema / Token",
+  "group": "Tasarla",
+  "icon": "Palette",
+  "lifecycle": "Staged",
+  "description": "Brand colors tenant-başına token override; çıktı theme token dosyası.",
+  "cli": {
+    "tool": "theme.apply",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "progress",
+      "items": [
+        {
+          "label": "metin / zemin",
+          "value": 100,
+          "sub": "15.2:1 ✓",
+          "tone": "ok"
+        },
+        {
+          "label": "vurgu / zemin",
+          "value": 100,
+          "sub": "8.4:1 ✓",
+          "tone": "ok"
+        },
+        {
+          "label": "ikincil / panel",
+          "value": 100,
+          "sub": "6.1:1 ✓",
+          "tone": "ok"
+        }
+      ],
+      "title": "AA kontrast bekçisi"
+    },
+    {
+      "type": "badges",
+      "items": [
+        {
+          "label": "09A (varsayılan)"
+        },
+        {
+          "label": "Okyanus"
+        },
+        {
+          "label": "Orman"
+        },
+        {
+          "label": "Gece"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "icon": "Palette",
+      "text": "AA kontrast altı değer kaydedilemez — token dışına CSS yazılamaz."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "docs",
+  "title": "Dokümantasyon",
+  "group": "Genel Bakış",
+  "icon": "BookOpen",
+  "lifecycle": "Released",
+  "description": "docs-as-code ağacı, sürüm seçici, indirilebilir export paketi.",
+  "cli": {
+    "tool": "docs.search",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "cards",
+      "cols": 3,
+      "items": [
+        {
+          "title": "TechDocs",
+          "icon": "BookOpen",
+          "body": "mimari/ · adapter/ · api/ · runbook/ · onboarding/"
+        },
+        {
+          "title": "SOP",
+          "icon": "ScrollText",
+          "body": "rollback · incident · tenant taşıma · sır rotasyonu"
+        },
+        {
+          "title": "AI Asistanı",
+          "icon": "Bot",
+          "body": "⌘K içinde '?' ile sor — yanıt kaynak atfıyla."
+        }
+      ]
+    }
+  ]
+}

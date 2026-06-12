@@ -1,0 +1,51 @@
+{
+  "id": "environments",
+  "title": "Ortamlar",
+  "group": "Yürüt",
+  "icon": "Layers",
+  "lifecycle": "Released",
+  "description": "dev/staging/prod topolojisi + ortam değişkenleri + stage geçişi.",
+  "cli": {
+    "tool": "env.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "ortam",
+        "branch",
+        "build",
+        "mail"
+      ],
+      "rows": [
+        [
+          "development",
+          "feat/json-engine",
+          "#321 ✓",
+          "catcher"
+        ],
+        [
+          "staging",
+          "release/1.0",
+          "#319 ✓",
+          "catcher"
+        ],
+        [
+          "production",
+          "main",
+          "v0.9.3 ✓",
+          "GERÇEK gönderim"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "danger",
+      "icon": "ShieldAlert",
+      "text": "Üretim ortamı görsel olarak ayrışır; geri-alınamaz eylemler ek onay ister (Odoo.sh deseni)."
+    }
+  ]
+}

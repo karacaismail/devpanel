@@ -1,0 +1,72 @@
+{
+  "id": "domains",
+  "title": "Domain & Contract",
+  "group": "Tasarla",
+  "icon": "Network",
+  "lifecycle": "Released",
+  "description": "Kaya sınırları — her ilişki bir Contract'tır; kontrat dışı erişim ihlaldir.",
+  "cli": {
+    "tool": "contract.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "cards",
+      "cols": 3,
+      "items": [
+        {
+          "title": "identity",
+          "icon": "Network",
+          "body": "party",
+          "badge": "kernel",
+          "badgeTone": "default"
+        },
+        {
+          "title": "sales",
+          "icon": "Network",
+          "body": "listing, order",
+          "badge": "app",
+          "badgeTone": "outline"
+        },
+        {
+          "title": "billing",
+          "icon": "Network",
+          "body": "invoice",
+          "badge": "app",
+          "badgeTone": "outline"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "columns": [
+        "üreten",
+        "tüketen",
+        "tür",
+        "durum"
+      ],
+      "rows": [
+        [
+          "sales",
+          "billing",
+          "event",
+          "ok"
+        ],
+        [
+          "identity",
+          "sales",
+          "endpoint",
+          "ok"
+        ],
+        [
+          "sales",
+          "catalog",
+          "endpoint",
+          "ihlal ⚠"
+        ]
+      ]
+    }
+  ]
+}

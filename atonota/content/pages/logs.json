@@ -1,0 +1,26 @@
+{
+  "id": "logs",
+  "title": "Loglar",
+  "group": "Gözlemle",
+  "icon": "ScrollText",
+  "lifecycle": "Released",
+  "description": "trace_id/tenant/seviye filtreli structured log — telemetri değil (ADR-0006).",
+  "cli": {
+    "tool": "logs.tail",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "code",
+      "code": "14:02:11 info  GraphQL parties(filter) 18ms — RLS tenant=acme\n14:02:09 warn  slow query 2340ms — index önerisi\n14:01:58 error DLQ +1 invoice.create v2 şema uyuşmazlığı"
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "icon": "Snail",
+      "text": "Yavaş sorgu vitrini (>1000ms) ayrı; log drain syslog://collector.internal:6514 aktif."
+    }
+  ]
+}

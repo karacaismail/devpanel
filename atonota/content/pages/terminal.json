@@ -1,0 +1,20 @@
+{
+  "id": "terminal",
+  "title": "Terminal",
+  "group": "Gözlemle",
+  "icon": "TerminalSquare",
+  "lifecycle": "Released",
+  "description": "Panel-içi sdk REPL — ⌘K'nin metin hâli; terminal/Python/DB shell sekmeleri.",
+  "cli": {
+    "tool": "repl",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "code",
+      "code": "$ sdk archetype list\nparty    scope=kernel pii=true alan=5\nlisting  scope=app    pii=false alan=4\n$ sdk check\n24 sözleşmeden 23 yeşil — kırmızı panel kapatılamaz."
+    }
+  ]
+}

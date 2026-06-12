@@ -1,0 +1,45 @@
+{
+  "id": "media",
+  "title": "Media",
+  "group": "Yürüt",
+  "icon": "Image",
+  "lifecycle": "Released",
+  "description": "Tenant-scoped varlık kütüphanesi — kullanımdaki varlık silinemez.",
+  "cli": {
+    "tool": "media.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "dosya",
+        "tür",
+        "boyut",
+        "kullanım"
+      ],
+      "rows": [
+        [
+          "logo-acme.svg",
+          "image",
+          "8 KB",
+          "tema, e-posta"
+        ],
+        [
+          "hero.png",
+          "image",
+          "240 KB",
+          "surface"
+        ],
+        [
+          "kvkk.pdf",
+          "pdf",
+          "1.1 MB",
+          "e-posta"
+        ]
+      ]
+    }
+  ]
+}

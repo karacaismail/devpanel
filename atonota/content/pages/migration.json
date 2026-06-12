@@ -1,0 +1,43 @@
+{
+  "id": "migration",
+  "title": "Migration Paneli",
+  "group": "Yürüt",
+  "icon": "GitMerge",
+  "lifecycle": "Staged",
+  "description": "Şema diff → migration önizleme; LLM-review öneridir, karar değildir (d02).",
+  "cli": {
+    "tool": "migration.apply",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "code",
+      "code": "+ loyalty_tier: string  (tenant: acme)\n~ phone: required → nullable\n- legacy_code  -- GUARD: 30 gün soft-drop"
+    },
+    {
+      "type": "steps",
+      "items": [
+        {
+          "label": "uyumluluk taraması",
+          "done": true
+        },
+        {
+          "label": "kuru koşu (staging)",
+          "done": true
+        },
+        {
+          "label": "yedek al"
+        },
+        {
+          "label": "uygula"
+        },
+        {
+          "label": "doğrula"
+        }
+      ],
+      "title": "Versiyon yükseltme sihirbazı"
+    }
+  ]
+}

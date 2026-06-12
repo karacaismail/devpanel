@@ -1,0 +1,42 @@
+{
+  "id": "wbs",
+  "title": "WBS / Backlog",
+  "group": "Kontrol Et",
+  "icon": "ListTree",
+  "lifecycle": "Released",
+  "description": "Tanımlardan türeyen SP kırılımı + 'AI'a tarif et' kutusu.",
+  "cli": {
+    "tool": "wbs.read",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "steps",
+      "items": [
+        {
+          "label": "marketplace — App (Dağ · 34)",
+          "done": true
+        },
+        {
+          "label": "sales — Domain (Kaya · 21)",
+          "done": true
+        },
+        {
+          "label": "listing — ArcheType (Büyük Taş · 13)",
+          "done": true
+        },
+        {
+          "label": "order — ArcheType (Büyük Taş · 13)"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "tone": "warning",
+      "icon": "ListTree",
+      "text": "Komşuluk kuralı: seviye atlayan plan kaydedilemez. Toplam Σ 81 SP."
+    }
+  ]
+}

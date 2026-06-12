@@ -1,0 +1,45 @@
+{
+  "id": "scheduler",
+  "title": "Scheduler",
+  "group": "Yürüt",
+  "icon": "Clock",
+  "lifecycle": "Released",
+  "description": "Zamanlanmış işler — cron tanımdan; açıklama ve sonraki çalışmalar türetilir.",
+  "cli": {
+    "tool": "job.list",
+    "args": {
+      "org": "{{org}}"
+    }
+  },
+  "sections": [
+    {
+      "type": "table",
+      "columns": [
+        "iş",
+        "cron",
+        "açıklama",
+        "durum"
+      ],
+      "rows": [
+        [
+          "outbox-sweeper",
+          "*/5 * * * *",
+          "5 dakikada bir",
+          "aktif"
+        ],
+        [
+          "nightly-retention",
+          "0 3 * * *",
+          "her gün 03:00",
+          "aktif"
+        ],
+        [
+          "dlq-reaper",
+          "30 7 * * 1-5",
+          "hafta içi 07:30",
+          "duraklatıldı"
+        ]
+      ]
+    }
+  ]
+}
