@@ -19,9 +19,24 @@
 
 html,
 body {
-  background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
+}
+
+/* Matematik-defteri gridi DOĞRUDAN sayfa zemininde — tüm içeriğin arkasında,
+   kenar boşluklarında ve kartlar arasındaki koyu alanlarda garanti görünür.
+   Opak kartlar (bg-panel) üstünü kapatır, boşluklarda grid + blob'lar görünür. */
+body {
+  background-color: var(--color-background);
+  background-image:
+    linear-gradient(to right, rgba(99, 102, 241, 0.28) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.28) 1.5px, transparent 1.5px),
+    linear-gradient(to right, rgba(148, 163, 184, 0.16) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.16) 1px, transparent 1px);
+  background-size:
+    160px 160px, 160px 160px,
+    32px 32px, 32px 32px;
+  background-attachment: fixed;
 }
 
 ::-webkit-scrollbar {
