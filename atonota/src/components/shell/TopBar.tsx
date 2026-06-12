@@ -21,9 +21,18 @@ export function TopBar() {
           <option value="initech">initech</option>
         </select>
       </label>
-      <div className="flex items-center gap-0.5 rounded-full border border-border bg-panel/90 p-0.5 backdrop-blur">
+      {/* mobil: tek select (yer kazanır) */}
+      <label className={cn("flex items-center rounded-full border bg-panel/90 px-2 py-1.5 backdrop-blur sm:hidden", ENV_CLS[env])}>
+        <select aria-label="ortam" value={env} onChange={(e) => setEnv(e.target.value as Env)} className="bg-transparent text-[11px] font-medium focus:outline-none">
+          {(["development", "staging", "production"] as Env[]).map((e) => (
+            <option key={e} value={e} className="bg-panel text-foreground">{ENV_LABEL[e]}</option>
+          ))}
+        </select>
+      </label>
+      {/* desktop: 3 pill */}
+      <div className="hidden items-center gap-0.5 rounded-full border border-border bg-panel/90 p-0.5 backdrop-blur sm:flex">
         {(["development", "staging", "production"] as Env[]).map((e) => (
-          <button key={e} type="button" onClick={() => setEnv(e)} className={cn("rounded-full border border-transparent px-1.5 py-1 text-[10px] font-medium transition-colors sm:px-2.5 sm:text-[11px]", env === e ? ENV_CLS[e] : "text-muted hover:text-foreground")}>
+          <button key={e} type="button" onClick={() => setEnv(e)} className={cn("rounded-full border border-transparent px-2.5 py-1 text-[11px] font-medium transition-colors", env === e ? ENV_CLS[e] : "text-muted hover:text-foreground")}>
             {ENV_LABEL[e]}
           </button>
         ))}

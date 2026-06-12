@@ -71,9 +71,9 @@ export function DynamicIsland() {
             className="flex items-center gap-2 !rounded-full px-2.5 py-1.5 shadow-2xl shadow-black/50 transition-all hover:gap-3 sm:px-3 sm:hover:px-4"
           >
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-fg">A</span>
-            <Icon name={current.icon} className="h-3.5 w-3.5 text-primary" />
+            <Icon name={current.icon} className="hidden h-3.5 w-3.5 text-primary sm:inline" />
             <span className="hidden whitespace-nowrap text-xs font-medium text-foreground/80 sm:inline">{current.label}</span>
-            <span className="ml-0.5 flex items-center gap-1 rounded bg-primary/15 px-1.5 py-0.5 text-[9px] text-primary sm:ml-1"><Sparkles className="h-2.5 w-2.5" /> AI</span>
+            <span className="flex items-center gap-1 rounded bg-primary/15 px-1.5 py-0.5 text-[9px] text-primary sm:ml-1"><Sparkles className="h-2.5 w-2.5" /><span className="hidden sm:inline">AI</span></span>
             <kbd className="hidden text-[9px] sm:inline-flex">⌘K</kbd>
           </button>
           </LiquidGlass>
