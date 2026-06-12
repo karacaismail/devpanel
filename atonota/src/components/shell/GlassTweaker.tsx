@@ -52,13 +52,32 @@ export function GlassTweaker() {
       {open && (
         <LiquidGlass
           config={{ depth: 28, radius: 18, blur: 3, bezel: 14, edge: 0.7, specular: 0.6 }}
-          className="fixed right-12 top-1/2 z-[60] flex w-72 -translate-y-1/2 flex-col gap-3 !rounded-2xl p-4 text-foreground shadow-2xl shadow-black/60"
+          className="fixed right-12 top-1/2 z-[60] flex max-h-[85vh] w-72 -translate-y-1/2 flex-col gap-3 overflow-y-auto !rounded-2xl p-4 text-foreground shadow-2xl shadow-black/60"
         >
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium">Liquid Glass — ayarlar</span>
             <button type="button" aria-label="kapat" onClick={() => setOpen(false)} className="text-muted hover:text-foreground">
               <X className="h-4 w-4" />
             </button>
+          </div>
+
+          {/* CANLI ÖNİZLEME — global config'i kullanır (yerel override YOK), desenli
+              zemin üstünde; her slider'ın etkisi burada anında görünür. */}
+          <div className="relative h-28 shrink-0 overflow-hidden rounded-xl">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,#6366f1_0%,transparent_45%),radial-gradient(circle_at_80%_75%,#d946ef_0%,transparent_45%),linear-gradient(120deg,#0ea5e9,#10b981)]" />
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, rgba(255,255,255,0.45) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.45) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.22) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.22) 1px, transparent 1px)",
+                backgroundSize: "48px 48px, 48px 48px, 12px 12px, 12px 12px",
+              }}
+            />
+            <div className="absolute inset-0 grid place-items-center">
+              <LiquidGlass className="flex h-16 w-28 items-center justify-center text-xs font-medium text-white">
+                önizleme
+              </LiquidGlass>
+            </div>
           </div>
 
           {SLIDERS.map(([key, label, min, max, step]) => (
