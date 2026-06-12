@@ -9,7 +9,7 @@ import type { Section } from "../types";
  * (reaktif çekirdek; "JS değişince UI güncellenir" kanıtı).
  */
 export function GlassDemo({ section }: { section: Section }) {
-  const [cfg, setCfg] = useState<GlassConfig>({ ...DEFAULTS, depth: 56, radius: 28 });
+  const [cfg, setCfg] = useState<GlassConfig>({ ...DEFAULTS });
   const real = supportsRealRefraction();
 
   const set = (patch: Partial<GlassConfig>) => {
@@ -19,11 +19,13 @@ export function GlassDemo({ section }: { section: Section }) {
   };
 
   const sliders: Array<[keyof GlassConfig, string, number, number, number]> = [
-    ["depth", "Mercek derinliği", 0, 120, 1],
-    ["blur", "Buzlanma", 0, 12, 0.5],
-    ["radius", "Köşe yarıçapı", 0, 48, 1],
+    ["depth", "Mercek derinliği", 0, 160, 1],
+    ["bezel", "Bezel (pah) genişliği", 4, 48, 1],
     ["edge", "Kenar lens şiddeti", 0, 1, 0.05],
-    ["chroma", "Kromatik aberasyon", 0, 6, 0.5],
+    ["chroma", "Kromatik aberasyon", 0, 8, 0.5],
+    ["blur", "Buzlanma", 0, 12, 0.5],
+    ["saturation", "Doygunluk", 1, 2.5, 0.1],
+    ["radius", "Köşe yarıçapı", 0, 48, 1],
     ["specular", "Specular parlama", 0, 1, 0.05],
   ];
 
