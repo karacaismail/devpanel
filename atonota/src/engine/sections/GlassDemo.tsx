@@ -39,17 +39,29 @@ export function GlassDemo({ section }: { section: Section }) {
       </CardHeader>
       <CardContent>
         <div className="grid gap-5 lg:grid-cols-[1fr_18rem]">
-          {/* Sahne: renkli arka plan üstünde cam kartlar */}
-          <div className="relative grid min-h-56 place-items-center overflow-hidden rounded-xl bg-[radial-gradient(circle_at_30%_30%,#6366f1_0%,transparent_45%),radial-gradient(circle_at_75%_70%,#d946ef_0%,transparent_45%),linear-gradient(120deg,#0ea5e9,#10b981)] p-6">
-            <div className="grid grid-cols-2 gap-4">
-              <LiquidGlass config={cfg} className="flex h-28 w-40 items-center justify-center rounded-2xl text-sm font-medium text-white">
+          {/* Sahne: renkli gradyan + MATEMATİK GRİD — cam kartlar bu çizgileri büker.
+              Kırılma ancak desenli zeminde görünür; bu yüzden sahne grid taşır. */}
+          <div className="relative grid min-h-72 place-items-center overflow-hidden rounded-xl p-6">
+            {/* renkli zemin */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,#6366f1_0%,transparent_45%),radial-gradient(circle_at_80%_75%,#d946ef_0%,transparent_45%),linear-gradient(120deg,#0ea5e9,#10b981)]" />
+            {/* grid çizgileri — camın altında bükülecek olan desen */}
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.25) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.25) 1px, transparent 1px)",
+                backgroundSize: "64px 64px, 64px 64px, 16px 16px, 16px 16px",
+              }}
+            />
+            <div className="relative grid grid-cols-2 gap-5">
+              <LiquidGlass config={cfg} className="flex h-32 w-44 items-center justify-center rounded-2xl text-sm font-medium text-white">
                 liquid glass
               </LiquidGlass>
-              <LiquidGlass config={{ ...cfg, tint: "rgba(99,102,241,0.10)" }} className="flex h-28 w-40 items-center justify-center rounded-2xl text-sm font-medium text-white">
+              <LiquidGlass config={{ ...cfg, tint: "rgba(99,102,241,0.10)" }} className="flex h-32 w-44 items-center justify-center rounded-2xl text-sm font-medium text-white">
                 üst katman
               </LiquidGlass>
             </div>
-            <p className="absolute bottom-2 left-3 font-mono text-[10px] text-white/60">arka planı kaydırıcılarla kırılırken izle</p>
+            <p className="absolute bottom-2 left-3 font-mono text-[10px] text-white/70">grid çizgileri camın altında bükülüyor — derinliği artır, kenara bak</p>
           </div>
 
           {/* Reaktif kontroller */}
