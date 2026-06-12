@@ -44,6 +44,33 @@ body {
   animation: animateIn 0.2s ease-out;
 }
 
+/* Matematik-defteri gridi — liquid-glass'ın kıracağı canlı zemin deseni. */
+.lg-grid {
+  background-repeat: repeat;
+  will-change: background-position;
+}
+.lg-grid-minor {
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  animation: lgDrift 60s linear infinite;
+}
+.lg-grid-major {
+  background-image:
+    linear-gradient(to right, rgba(99, 102, 241, 0.14) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.14) 1.5px, transparent 1.5px);
+  background-size: 140px 140px;
+  animation: lgDrift 90s linear infinite reverse;
+}
+@keyframes lgDrift {
+  from { background-position: 0 0; }
+  to { background-position: 140px 140px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lg-grid { animation: none; }
+}
+
 kbd {
   font-family: var(--font-mono);
   font-size: 0.7rem;
