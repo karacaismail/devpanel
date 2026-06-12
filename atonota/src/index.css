@@ -55,37 +55,41 @@ kbd {
 
 /* liquid-glass yüzeyi — feDisplacementMap arka planı kırar; bu katman
    cam tonu + kenar specular parlamasını (Apple liquid-glass pahı) ekler.
-   Refraksiyon backdrop-filter'dan (JS), kabartma/parlama buradan gelir. */
-.lg-surface {
-  position: relative;
-  background: var(--lg-tint, rgba(255, 255, 255, 0.06));
-  border-radius: var(--lg-radius, 24px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, calc(0.35 * var(--lg-specular, 0.5))),
-    inset 0 -1px 1px rgba(0, 0, 0, 0.25),
-    0 8px 32px rgba(0, 0, 0, 0.35);
-  isolation: isolate;
-  overflow: hidden;
-}
-/* Kenar mercek parlaması — köşelerde toplanan ışık çizgisi. */
-.lg-surface::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, calc(0.5 * var(--lg-specular, 0.5))),
-    transparent 35%,
-    transparent 65%,
-    rgba(255, 255, 255, calc(0.25 * var(--lg-specular, 0.5)))
-  );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+   @layer components: Tailwind utilities (fixed/absolute/right-4 vb.) bu
+   kuralları override edebilsin diye — aksi halde position:relative dayatır
+   ve fixed konumlandırma bozulur (orb panelinin sol-üstte açılması bug'ı). */
+@layer components {
+  .lg-surface {
+    position: relative;
+    background: var(--lg-tint, rgba(255, 255, 255, 0.06));
+    border-radius: var(--lg-radius, 24px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, calc(0.35 * var(--lg-specular, 0.5))),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.25),
+      0 8px 32px rgba(0, 0, 0, 0.35);
+    isolation: isolate;
+    overflow: hidden;
+  }
+  /* Kenar mercek parlaması — köşelerde toplanan ışık çizgisi. */
+  .lg-surface::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, calc(0.5 * var(--lg-specular, 0.5))),
+      transparent 35%,
+      transparent 65%,
+      rgba(255, 255, 255, calc(0.25 * var(--lg-specular, 0.5)))
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .lg-surface { transition: none; }
