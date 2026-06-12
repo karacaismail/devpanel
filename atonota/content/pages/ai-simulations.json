@@ -4,7 +4,7 @@
   "group": "AI",
   "icon": "Sparkles",
   "lifecycle": "Staged",
-  "description": "Altı deterministik AI akışı — hepsi diff/önizleme üretir, sormadan yazmaz.",
+  "description": "Deterministik AI akışları — hepsi gerçekten çalışır, diff/önizleme üretir, sormadan yazmaz.",
   "cli": {
     "tool": "ai.simulate",
     "args": {
@@ -13,24 +13,33 @@
   },
   "sections": [
     {
-      "type": "cards",
-      "cols": 3,
-      "items": [
-        {
-          "title": "Şema üretici",
-          "icon": "Database",
-          "body": "doğal dil → modül taslağı (test İLK)"
-        },
-        {
-          "title": "Log anomali özeti",
-          "icon": "ScrollText",
-          "body": "842 satır → 4 bulgu"
-        },
-        {
-          "title": "Kontrat testi üretici",
-          "icon": "FlaskConical",
-          "body": "kırmızı başlayan iskelet"
-        }
+      "type": "aisim",
+      "title": "Şema / Modül üretici",
+      "description": "Doğal dilden modül taslağı — test dosyası İLK üretilir.",
+      "examples": [
+        "crm şeması oluştur",
+        "fatura modülü: no, tarih, tutar",
+        "hrms izin modeli"
+      ]
+    },
+    {
+      "type": "aisim",
+      "title": "Sorgu & Log & Test",
+      "description": "Tek motor, çok niyet: GraphQL sorgusu, log özeti, kontrat testi.",
+      "examples": [
+        "son 30 günde aktif partyler",
+        "logları özetle",
+        "listing için test üret"
+      ]
+    },
+    {
+      "type": "aisim",
+      "title": "Tema paleti",
+      "description": "Marka tonundan AA-doğrulanmış token seti.",
+      "examples": [
+        "koyu yeşil kurumsal",
+        "sıcak turuncu",
+        "gece mavisi minimal"
       ]
     }
   ]

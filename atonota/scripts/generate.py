@@ -45,18 +45,21 @@ def progress(items, title=None):
     if title: d["title"] = title
     return d
 def kanban(columns): return {"type": "kanban", "columns": columns}
+def aisim(title, desc, examples): return {"type": "aisim", "title": title, "description": desc, "examples": examples}
 
 # ===== GENEL BAKIŞ =====
 page("dashboard", "{{org}} · Genel Bakış", "Genel Bakış", "LayoutDashboard", "Released", "console.overview", [
+  callout("AI-first konsol: üstteki ada (⌘K) ve sağ alttaki orb doğal dil komut alır; AI önerir, sen onaylarsın. Aşağıdan da deneyebilirsin.","ok","Sparkles"),
+  aisim("AI komut merkezi", "Doğal dil yaz — şema/modül/sorgu/palet/log/test üretir. Çıktı diff'tir, onayla uygulanır.", ["crm şeması oluştur","koyu yeşil kurumsal palet","son 30 günde aktif partyler","logları özetle"]),
   metrics(("tenant","3","1 kernel-paylaşımlı"),("ortam","{{env}}","aktif bağlam"),("conformance","✓","sdk check"),("AI maliyet (ay)","$78","bütçe $120")),
   callout("Production bağlamındasın — e-postalar gerçekten gönderilir, geri-alınamaz eylemler çift imza ister.","danger","ShieldAlert","env == production"),
   callout("Staging — mail catcher aktif, e-postalar yakalanır.","warning","Mail","env == staging"),
   cards([
-    {"title":"JSON Engine","icon":"Braces","body":"Sayfalar content/pages/*.json'dan parse edilir; {{token}} interpolasyonu + ECA kuralları runtime'da işler.","badge":"aktif","badgeTone":"success"},
-    {"title":"Bora Estetiği","icon":"Palette","body":"shadcn/ui (Radix + Tailwind), koyu neutral + indigo — Next.js değil, Vite.","badge":"shadcn","badgeTone":"outline"},
-    {"title":"AI-first","icon":"Bot","body":"Her sayfanın CLI/MCP eşdeğeri JSON'daki cli alanından üretilir.","badge":"UI=CLI=API","badgeTone":"outline"},
+    {"title":"AI-first omurga","icon":"Sparkles","body":"Yüzen ada + orb + her sayfada AI; öneri→diff→onay→audit zinciri.","badge":"aktif","badgeTone":"success"},
+    {"title":"JSON Engine","icon":"Braces","body":"Sayfalar content/*.json'dan parse edilir; {{token}} + ECA kuralları runtime'da işler.","badge":"engine","badgeTone":"outline"},
+    {"title":"Bora Estetiği","icon":"Palette","body":"shadcn/ui (Radix + Tailwind) + iOS yüzen ada — Next.js değil, Vite.","badge":"shadcn","badgeTone":"outline"},
   ]),
-], "Tüm içerik content/*.json'dan engine ile gelir — bu sayfayı düzenlemek için kod değil JSON değişir.")
+], "AI-first konsol — içerik content/*.json'dan engine ile gelir; AI motoru deterministik ve onay-kapılı.")
 page("activity","Aktivite & Audit","Genel Bakış","Activity","Released","audit.tail",[
   table(["zaman","aktör","aksiyon","CLI eşdeğeri"],[["14:08","vibebot (MCP)","order scaffold önizlemesi","sdk scaffold --name order --test-first"],["13:54","ismail","acme token güncellendi (AA ✓)","sdk theme apply --tenant acme"],["13:31","ismail","Loyalty Points etkinleştirildi","sdk module enable --id loyalty-points"]],"Append-only denetim akışı"),
 ], "Panel ve agent aksiyonlarının değiştirilemez kaydı; agent aksiyonları işaretli.")
@@ -259,12 +262,14 @@ grp("Kontrol Et","ShieldCheck",[("test-runner","Test Runner","FlaskConical"),("g
 
 # ===== AI =====
 page("ai-copilot","AI Copilot","AI","Terminal","Released","copilot.chat",[
-  cards([{"title":"Doğal dil → şema","icon":"Database","body":"'destek talepleri modülü' → diff"},{"title":"Migration review","icon":"GitMerge","body":"risk analizi (öneri ≠ karar)"},{"title":"Tema paleti","icon":"Palette","body":"AA-doğrulanmış token seti"}]),
+  aisim("Copilot komut satırı", "Doğal dil yaz; AI bağlama göre şema/sorgu/palet/test üretir — çıktı diff, onayla uygulanır.", ["destek talepleri modülü oluştur","party için kontrat testi üret","koyu mavi palet","son 7 günde blocked partyler"]),
   callout("AI önerir, geliştirici onaylar; source of truth asla AI konuşması değildir.","ok","Bot"),
 ], "Panel-içi AI chat — bağlama duyarlı, diff üretir, onayla uygulanır.")
 page("ai-simulations","AI Simülasyonları","AI","Sparkles","Staged","ai.simulate",[
-  cards([{"title":"Şema üretici","icon":"Database","body":"doğal dil → modül taslağı (test İLK)"},{"title":"Log anomali özeti","icon":"ScrollText","body":"842 satır → 4 bulgu"},{"title":"Kontrat testi üretici","icon":"FlaskConical","body":"kırmızı başlayan iskelet"}]),
-], "Altı deterministik AI akışı — hepsi diff/önizleme üretir, sormadan yazmaz.")
+  aisim("Şema / Modül üretici", "Doğal dilden modül taslağı — test dosyası İLK üretilir.", ["crm şeması oluştur","fatura modülü: no, tarih, tutar","hrms izin modeli"]),
+  aisim("Sorgu & Log & Test", "Tek motor, çok niyet: GraphQL sorgusu, log özeti, kontrat testi.", ["son 30 günde aktif partyler","logları özetle","listing için test üret"]),
+  aisim("Tema paleti", "Marka tonundan AA-doğrulanmış token seti.", ["koyu yeşil kurumsal","sıcak turuncu","gece mavisi minimal"]),
+], "Deterministik AI akışları — hepsi gerçekten çalışır, diff/önizleme üretir, sormadan yazmaz.")
 page("ai-platform","AI Katmanı (Gateway)","AI","Cpu","Staged","ai.gateway.config",[
   table(["sağlayıcı","model","durum"],[["anthropic","claude-*","aktif"],["openai","gpt-*","aktif"],["local (ollama)","llama-*","yalnız dev"]]),
   table(["kural","model","fallback"],[["şema/kod","claude-sonnet","gpt-4o"],["özet/triage","claude-haiku","local"],["guardrail","local","claude-haiku"]],"Model yönlendirme"),

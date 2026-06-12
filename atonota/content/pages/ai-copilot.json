@@ -13,24 +13,14 @@
   },
   "sections": [
     {
-      "type": "cards",
-      "cols": 3,
-      "items": [
-        {
-          "title": "Doğal dil → şema",
-          "icon": "Database",
-          "body": "'destek talepleri modülü' → diff"
-        },
-        {
-          "title": "Migration review",
-          "icon": "GitMerge",
-          "body": "risk analizi (öneri ≠ karar)"
-        },
-        {
-          "title": "Tema paleti",
-          "icon": "Palette",
-          "body": "AA-doğrulanmış token seti"
-        }
+      "type": "aisim",
+      "title": "Copilot komut satırı",
+      "description": "Doğal dil yaz; AI bağlama göre şema/sorgu/palet/test üretir — çıktı diff, onayla uygulanır.",
+      "examples": [
+        "destek talepleri modülü oluştur",
+        "party için kontrat testi üret",
+        "koyu mavi palet",
+        "son 7 günde blocked partyler"
       ]
     },
     {

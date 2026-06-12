@@ -2,6 +2,8 @@ import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import { Sidebar } from "@/components/shell/Sidebar";
 import { TopBar } from "@/components/shell/TopBar";
 import { AmbientBackground } from "@/components/shell/AmbientBackground";
+import { DynamicIsland } from "@/components/shell/DynamicIsland";
+import { FloatingOrb } from "@/components/shell/FloatingOrb";
 import { Engine } from "@/engine/Engine";
 import { getPage, PAGE_LIST } from "@/engine/loader";
 
@@ -25,6 +27,7 @@ export default function App() {
     <div className="min-h-screen">
       <AmbientBackground />
       <Sidebar />
+      <DynamicIsland />
       <TopBar />
       <main className="relative z-10 mx-auto max-w-7xl px-4 pb-24 pt-16 lg:ml-64 lg:max-w-none lg:px-10">
         <Routes>
@@ -35,6 +38,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
+      <FloatingOrb />
     </div>
   );
 }

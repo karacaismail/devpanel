@@ -4,7 +4,7 @@
   "group": "Genel Bakış",
   "icon": "LayoutDashboard",
   "lifecycle": "Released",
-  "description": "Tüm içerik content/*.json'dan engine ile gelir — bu sayfayı düzenlemek için kod değil JSON değişir.",
+  "description": "AI-first konsol — içerik content/*.json'dan engine ile gelir; AI motoru deterministik ve onay-kapılı.",
   "cli": {
     "tool": "console.overview",
     "args": {
@@ -12,6 +12,23 @@
     }
   },
   "sections": [
+    {
+      "type": "callout",
+      "tone": "ok",
+      "icon": "Sparkles",
+      "text": "AI-first konsol: üstteki ada (⌘K) ve sağ alttaki orb doğal dil komut alır; AI önerir, sen onaylarsın. Aşağıdan da deneyebilirsin."
+    },
+    {
+      "type": "aisim",
+      "title": "AI komut merkezi",
+      "description": "Doğal dil yaz — şema/modül/sorgu/palet/log/test üretir. Çıktı diff'tir, onayla uygulanır.",
+      "examples": [
+        "crm şeması oluştur",
+        "koyu yeşil kurumsal palet",
+        "son 30 günde aktif partyler",
+        "logları özetle"
+      ]
+    },
     {
       "type": "metrics",
       "items": [
@@ -56,24 +73,24 @@
       "cols": 3,
       "items": [
         {
-          "title": "JSON Engine",
-          "icon": "Braces",
-          "body": "Sayfalar content/pages/*.json'dan parse edilir; {{token}} interpolasyonu + ECA kuralları runtime'da işler.",
+          "title": "AI-first omurga",
+          "icon": "Sparkles",
+          "body": "Yüzen ada + orb + her sayfada AI; öneri→diff→onay→audit zinciri.",
           "badge": "aktif",
           "badgeTone": "success"
         },
         {
-          "title": "Bora Estetiği",
-          "icon": "Palette",
-          "body": "shadcn/ui (Radix + Tailwind), koyu neutral + indigo — Next.js değil, Vite.",
-          "badge": "shadcn",
+          "title": "JSON Engine",
+          "icon": "Braces",
+          "body": "Sayfalar content/*.json'dan parse edilir; {{token}} + ECA kuralları runtime'da işler.",
+          "badge": "engine",
           "badgeTone": "outline"
         },
         {
-          "title": "AI-first",
-          "icon": "Bot",
-          "body": "Her sayfanın CLI/MCP eşdeğeri JSON'daki cli alanından üretilir.",
-          "badge": "UI=CLI=API",
+          "title": "Bora Estetiği",
+          "icon": "Palette",
+          "body": "shadcn/ui (Radix + Tailwind) + iOS yüzen ada — Next.js değil, Vite.",
+          "badge": "shadcn",
           "badgeTone": "outline"
         }
       ]

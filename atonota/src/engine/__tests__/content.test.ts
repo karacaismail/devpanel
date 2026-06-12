@@ -4,8 +4,17 @@ import { REGISTRY } from "../registry";
 
 describe("içerik bütünlüğü — JSON kontrolü", () => {
   it("sayfalar yüklendi ve dashboard var", () => {
-    expect(PAGE_LIST.length).toBeGreaterThanOrEqual(8);
+    expect(PAGE_LIST.length).toBeGreaterThanOrEqual(60);
     expect(getPage("dashboard")).toBeDefined();
+  });
+
+  it("AI-first: dashboard ve ai sayfaları interaktif aisim taşır", () => {
+    const ids = ["dashboard", "ai-copilot", "ai-simulations"];
+    for (const id of ids) {
+      const p = getPage(id);
+      expect(p, id).toBeDefined();
+      expect(p!.sections.some((s) => s.type === "aisim"), `${id} aisim içermeli`).toBe(true);
+    }
   });
 
   it("her sayfanın id/title/sections'ı var ve her section tipi registry'de tanımlı", () => {

@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import * as Icons from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { AiSim } from "./sections/AiSim";
 import type { Section } from "./types";
 
 /**
@@ -208,6 +209,7 @@ export const REGISTRY: Record<string, (p: { section: Section }) => ReactNode> = 
   keyvalue: KeyValue,
   progress: Progress,
   kanban: Kanban,
+  aisim: AiSim,
 };
 
 export { Icon };
