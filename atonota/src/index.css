@@ -128,25 +128,6 @@ kbd {
     background-repeat: no-repeat;
     mix-blend-mode: screen;
   }
-  /* KATMAN: kenar mercek parlaması — köşelerde toplanan ışık çizgisi (rim). */
-  .lg-surface::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, calc(0.6 * var(--lg-specular, 0.6))),
-      transparent 30%,
-      transparent 68%,
-      rgba(255, 255, 255, calc(0.3 * var(--lg-specular, 0.6)))
-    );
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   .lg-surface { transition: none; }

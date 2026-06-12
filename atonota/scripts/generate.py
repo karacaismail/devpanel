@@ -76,16 +76,9 @@ page("notifications","Bildirimler","Genel Bakış","Bell","Released","notificati
 page("docs","Dokümantasyon","Genel Bakış","BookOpen","Released","docs.search",[
   cards([{"title":"TechDocs","icon":"BookOpen","body":"mimari/ · adapter/ · api/ · runbook/ · onboarding/"},{"title":"SOP","icon":"ScrollText","body":"rollback · incident · tenant taşıma · sır rotasyonu"},{"title":"AI Asistanı","icon":"Bot","body":"⌘K içinde '?' ile sor — yanıt kaynak atfıyla."}]),
 ], "docs-as-code ağacı, sürüm seçici, indirilebilir export paketi.")
-page("liquid-glass","Liquid Glass","Genel Bakış","Palette","Staged","ui.glass.config",[
-  callout("Gerçek mercek/su kırılması — CSS blur değil. SVG feDisplacementMap arka planı piksel-piksel saptırır (Apple liquid-glass yaklaşımı). Üstteki yüzen ada ve sağ alttaki orb da bu camdan.","ok","Sparkles"),
-  {"type":"glassdemo","title":"Canlı liquid-glass"},
-  cards([
-    {"title":"TS kütüphanesi","icon":"Braces","body":"src/liquid-glass — framework-agnostik çekirdek + React adaptörü (<LiquidGlass>, useLiquidGlass).","badge":"TS","badgeTone":"outline"},
-    {"title":"Reaktif","icon":"Sparkles","body":"setConfig() → filtre yeniden üretilir → tüm cam yüzeyler anında güncellenir.","badge":"canlı","badgeTone":"success"},
-    {"title":"Uyumlu","icon":"Puzzle","body":"className forward + Radix Slot (asChild) → shadcn/Ant/PrimeReact ile çalışır.","badge":"adaptör","badgeTone":"outline"},
-  ]),
-], "Gerçek refraksiyon kütüphanesi — TS çekirdek, React adaptörü, reaktif config.")
-grp("Genel Bakış","Compass",[("dashboard","Dashboard","LayoutDashboard"),("insights","AI İçgörüler","Sparkles"),("liquid-glass","Liquid Glass","Palette"),("learn","Eğitim Yolu","GraduationCap"),("activity","Aktivite & Audit","Activity"),("notifications","Bildirimler","Bell"),("docs","Dokümantasyon","BookOpen")])
+# not: Liquid Glass bir UI tekniğidir, ayrı sayfa değil. Ayarlar global tweak
+# panelinden (sağ kenar) yapılır; demo sayfası projeden kaldırıldı.
+grp("Genel Bakış","Compass",[("dashboard","Dashboard","LayoutDashboard"),("insights","AI İçgörüler","Sparkles"),("learn","Eğitim Yolu","GraduationCap"),("activity","Aktivite & Audit","Activity"),("notifications","Bildirimler","Bell"),("docs","Dokümantasyon","BookOpen")])
 
 # ===== TASARLA =====
 page("schema","Şema Tasarımcısı","Tasarla","Database","Draft","schema.read",[
