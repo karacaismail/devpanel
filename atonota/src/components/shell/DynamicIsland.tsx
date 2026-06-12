@@ -49,7 +49,15 @@ export function DynamicIsland() {
   return (
     <>
       {expanded && <div className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm" />}
-      <div className="fixed left-1/2 top-4 z-50 -translate-x-1/2" ref={ref}>
+      <div
+        className={cn(
+          "fixed z-50",
+          expanded
+            ? "left-1/2 top-3 -translate-x-1/2"
+            : "left-3 top-3 translate-x-0 sm:left-1/2 sm:top-4 sm:-translate-x-1/2",
+        )}
+        ref={ref}
+      >
         {!expanded ? (
           <LiquidGlass
             asChild
@@ -58,17 +66,17 @@ export function DynamicIsland() {
           <button
             type="button"
             onClick={() => setExpanded(true)}
-            className="flex items-center gap-2 !rounded-full px-3 py-1.5 shadow-2xl shadow-black/50 transition-all hover:gap-3 hover:px-4"
+            className="flex items-center gap-2 !rounded-full px-2.5 py-1.5 shadow-2xl shadow-black/50 transition-all hover:gap-3 sm:px-3 sm:hover:px-4"
           >
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-fg">A</span>
             <Icon name={current.icon} className="h-3.5 w-3.5 text-primary" />
-            <span className="whitespace-nowrap text-xs font-medium text-foreground/80">{current.label}</span>
-            <span className="ml-1 flex items-center gap-1 rounded bg-primary/15 px-1.5 py-0.5 text-[9px] text-primary"><Sparkles className="h-2.5 w-2.5" /> AI</span>
-            <kbd className="text-[9px]">⌘K</kbd>
+            <span className="hidden whitespace-nowrap text-xs font-medium text-foreground/80 sm:inline">{current.label}</span>
+            <span className="ml-0.5 flex items-center gap-1 rounded bg-primary/15 px-1.5 py-0.5 text-[9px] text-primary sm:ml-1"><Sparkles className="h-2.5 w-2.5" /> AI</span>
+            <kbd className="hidden text-[9px] sm:inline-flex">⌘K</kbd>
           </button>
           </LiquidGlass>
         ) : (
-          <LiquidGlass config={{ depth: 28, radius: 16, blur: 3, edge: 0.6, specular: 0.5 }} className="max-h-[80vh] w-[calc(100vw-2rem)] overflow-y-auto !rounded-2xl shadow-2xl shadow-black/60 animate-in sm:w-[720px]">
+          <LiquidGlass config={{ depth: 28, radius: 16, blur: 3, edge: 0.6, specular: 0.5 }} className="max-h-[82vh] w-[calc(100vw-1.5rem)] overflow-y-auto !rounded-2xl shadow-2xl shadow-black/60 animate-in sm:w-[720px]">
             {/* AI-first komut çubuğu */}
             <div className="flex items-center gap-2 border-b border-border/50 px-4 py-3">
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-fg">A</span>
