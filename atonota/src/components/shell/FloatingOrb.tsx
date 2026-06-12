@@ -44,7 +44,7 @@ export function FloatingOrb() {
   return (
     <>
       {open && (
-        <LiquidGlass config={{ depth: 24, radius: 16, blur: 3, edge: 0.6, specular: 0.5 }} className="fixed bottom-20 right-4 z-50 flex h-[28rem] w-[min(24rem,calc(100vw-2rem))] flex-col !rounded-2xl shadow-2xl shadow-black/60">
+        <LiquidGlass config={{ depth: 24, radius: 16, blur: 3, edge: 0.6, specular: 0.5 }} className="fixed bottom-20 right-4 z-[60] flex h-[28rem] w-[min(24rem,calc(100vw-2rem))] flex-col !rounded-2xl shadow-2xl shadow-black/60">
           <div className="flex items-center gap-2 border-b border-border px-4 py-3">
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-primary-fg"><Sparkles className="h-3.5 w-3.5" /></span>
             <div className="flex-1"><p className="text-sm font-semibold text-foreground">AI Asistan</p><p className="text-[10px] text-muted">bağlam: {pathname}</p></div>
@@ -74,7 +74,7 @@ export function FloatingOrb() {
         type="button"
         aria-label="AI asistan"
         onClick={() => setOpen((o) => !o)}
-        className={cn("fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-fg shadow-2xl shadow-primary/30 transition-transform hover:scale-105", pulse && "animate-pulse ring-4 ring-primary/30")}
+        className={cn("fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-fg shadow-2xl shadow-primary/30 transition-transform hover:scale-105", pulse && "animate-pulse ring-4 ring-primary/30")}
       >
         {open ? <X className="h-5 w-5" /> : <Sparkles className="h-5 w-5" />}
       </button>

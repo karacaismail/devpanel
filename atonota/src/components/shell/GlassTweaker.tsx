@@ -44,7 +44,7 @@ export function GlassTweaker() {
         type="button"
         aria-label="Liquid glass ayarları"
         onClick={() => setOpen((o) => !o)}
-        className="fixed right-0 top-1/2 z-50 flex h-12 w-9 -translate-y-1/2 items-center justify-center rounded-l-xl border border-r-0 border-border bg-panel/90 text-muted backdrop-blur transition-colors hover:text-foreground"
+        className="fixed right-0 top-1/2 z-40 flex h-12 w-9 -translate-y-1/2 items-center justify-center rounded-l-xl border border-r-0 border-border bg-panel/90 text-muted backdrop-blur transition-colors hover:text-foreground"
       >
         <SlidersHorizontal className="h-4 w-4" />
       </button>
@@ -52,7 +52,7 @@ export function GlassTweaker() {
       {open && (
         <LiquidGlass
           config={{ depth: 28, radius: 18, blur: 3, bezel: 14, edge: 0.7, specular: 0.6 }}
-          className="fixed right-12 top-1/2 z-50 flex w-72 -translate-y-1/2 flex-col gap-3 !rounded-2xl p-4 text-foreground shadow-2xl shadow-black/60"
+          className="fixed right-12 top-1/2 z-[60] flex w-72 -translate-y-1/2 flex-col gap-3 !rounded-2xl p-4 text-foreground shadow-2xl shadow-black/60"
         >
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium">Liquid Glass — ayarlar</span>

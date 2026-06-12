@@ -48,13 +48,15 @@ export function DynamicIsland() {
 
   return (
     <>
-      {expanded && <div className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm" />}
+      {/* scrim: z-50 → tüm tetikleyicilerin (z-40) üstünde, panelin (z-60) altında.
+          Yalnız karartma, blur YOK (kullanıcı isteği). */}
+      {expanded && <div className="fixed inset-0 z-50 bg-black/50" />}
       <div
         className={cn(
-          "fixed z-50",
+          "fixed",
           expanded
-            ? "left-1/2 top-3 -translate-x-1/2"
-            : "left-3 top-3 translate-x-0 sm:left-1/2 sm:top-4 sm:-translate-x-1/2",
+            ? "left-1/2 top-3 z-[60] -translate-x-1/2"
+            : "left-3 top-3 z-40 translate-x-0 sm:left-1/2 sm:top-4 sm:-translate-x-1/2",
         )}
         ref={ref}
       >

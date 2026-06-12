@@ -19,7 +19,7 @@ export function Sidebar() {
   }, [activeGroup]);
 
   return (
-    <aside className="fixed left-0 top-0 z-40 hidden h-screen w-64 flex-col border-r border-border bg-panel/95 backdrop-blur lg:flex">
+    <aside className="fixed left-0 top-0 z-30 hidden h-screen w-64 flex-col border-r border-border bg-panel/95 backdrop-blur lg:flex">
       <div className="flex h-14 items-center gap-2 border-b border-border px-6">
         <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-fg">A</div>
         <span className="text-lg font-semibold">Atonota</span>
