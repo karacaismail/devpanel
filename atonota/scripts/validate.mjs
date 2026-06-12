@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const REG = new Set(["prose", "metrics", "cards", "table", "badges", "code", "callout", "steps", "keyvalue", "progress", "kanban", "aisim"]);
+const REG = new Set(["prose", "metrics", "cards", "table", "badges", "code", "callout", "steps", "keyvalue", "progress", "kanban", "aisim", "glassdemo"]);
 const dir = join(ROOT, "content", "pages");
 const files = readdirSync(dir).filter((f) => f.endsWith(".json"));
 const pages = {};

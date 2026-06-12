@@ -4,6 +4,7 @@ import { Search, X, Sparkles, ChevronRight, ArrowRight } from "lucide-react";
 import { NAV, PAGES } from "@/engine/loader";
 import { Icon } from "@/engine/registry";
 import { simulate, SUGGESTIONS } from "@/ai/simulate";
+import { LiquidGlass } from "@/liquid-glass";
 import { cn } from "@/lib/utils";
 
 interface Leaf { label: string; page: string; icon?: string }
@@ -50,10 +51,14 @@ export function DynamicIsland() {
       {expanded && <div className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm" />}
       <div className="fixed left-1/2 top-4 z-50 -translate-x-1/2" ref={ref}>
         {!expanded ? (
+          <LiquidGlass
+            asChild
+            config={{ depth: 36, radius: 999, blur: 1, edge: 0.85, specular: 0.7, tint: "rgba(255,255,255,0.05)" }}
+          >
           <button
             type="button"
             onClick={() => setExpanded(true)}
-            className="flex items-center gap-2 rounded-full border border-border bg-background/90 px-3 py-1.5 shadow-2xl shadow-black/50 backdrop-blur-xl transition-all hover:gap-3 hover:px-4"
+            className="flex items-center gap-2 !rounded-full px-3 py-1.5 shadow-2xl shadow-black/50 transition-all hover:gap-3 hover:px-4"
           >
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-fg">A</span>
             <Icon name={current.icon} className="h-3.5 w-3.5 text-primary" />
@@ -61,8 +66,9 @@ export function DynamicIsland() {
             <span className="ml-1 flex items-center gap-1 rounded bg-primary/15 px-1.5 py-0.5 text-[9px] text-primary"><Sparkles className="h-2.5 w-2.5" /> AI</span>
             <kbd className="text-[9px]">⌘K</kbd>
           </button>
+          </LiquidGlass>
         ) : (
-          <div className="max-h-[80vh] w-[calc(100vw-2rem)] overflow-y-auto rounded-2xl border border-border bg-background/95 shadow-2xl shadow-black/60 backdrop-blur-xl animate-in sm:w-[720px]">
+          <LiquidGlass config={{ depth: 28, radius: 16, blur: 3, edge: 0.6, specular: 0.5 }} className="max-h-[80vh] w-[calc(100vw-2rem)] overflow-y-auto !rounded-2xl shadow-2xl shadow-black/60 animate-in sm:w-[720px]">
             {/* AI-first komut çubuğu */}
             <div className="flex items-center gap-2 border-b border-border/50 px-4 py-3">
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-fg">A</span>
@@ -127,7 +133,7 @@ export function DynamicIsland() {
               <span><kbd>esc</kbd> kapat</span><span><kbd>⌘K</kbd> aç</span>
               <span className="ml-auto flex items-center gap-1"><Sparkles className="h-2.5 w-2.5 text-primary" /> AI-first komut adası <ChevronRight className="h-2.5 w-2.5" /> Enter ile üret</span>
             </div>
-          </div>
+          </LiquidGlass>
         )}
       </div>
     </>

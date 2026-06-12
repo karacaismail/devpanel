@@ -3,6 +3,7 @@ import * as Icons from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AiSim } from "./sections/AiSim";
+import { GlassDemo } from "./sections/GlassDemo";
 import type { Section } from "./types";
 
 /**
@@ -210,6 +211,7 @@ export const REGISTRY: Record<string, (p: { section: Section }) => ReactNode> = 
   progress: Progress,
   kanban: Kanban,
   aisim: AiSim,
+  glassdemo: GlassDemo,
 };
 
 export { Icon };

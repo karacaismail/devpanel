@@ -15,6 +15,11 @@
           "icon": "Sparkles"
         },
         {
+          "label": "Liquid Glass",
+          "page": "liquid-glass",
+          "icon": "Palette"
+        },
+        {
           "label": "Eğitim Yolu",
           "page": "learn",
           "icon": "GraduationCap"

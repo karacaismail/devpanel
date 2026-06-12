@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Sparkles, Send, X, Minimize2, Copy } from "lucide-react";
 import { simulate } from "@/ai/simulate";
+import { LiquidGlass } from "@/liquid-glass";
 import { useContextStore } from "@/store/context-store";
 import { cn } from "@/lib/utils";
 
@@ -43,7 +44,7 @@ export function FloatingOrb() {
   return (
     <>
       {open && (
-        <div className="fixed bottom-20 right-4 z-50 flex h-[28rem] w-[min(24rem,calc(100vw-2rem))] flex-col rounded-2xl border border-border bg-background/95 shadow-2xl shadow-black/60 backdrop-blur-xl">
+        <LiquidGlass config={{ depth: 24, radius: 16, blur: 3, edge: 0.6, specular: 0.5 }} className="fixed bottom-20 right-4 z-50 flex h-[28rem] w-[min(24rem,calc(100vw-2rem))] flex-col !rounded-2xl shadow-2xl shadow-black/60">
           <div className="flex items-center gap-2 border-b border-border px-4 py-3">
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-primary-fg"><Sparkles className="h-3.5 w-3.5" /></span>
             <div className="flex-1"><p className="text-sm font-semibold text-foreground">AI Asistan</p><p className="text-[10px] text-muted">bağlam: {pathname}</p></div>
@@ -67,7 +68,7 @@ export function FloatingOrb() {
             <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send(input)} placeholder="AI'a sor…" className="flex-1 rounded-lg border border-border bg-elevated px-3 py-1.5 text-xs text-foreground placeholder:text-muted focus:outline-none" />
             <button type="button" aria-label="gönder" onClick={() => send(input)} className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-fg"><Send className="h-3.5 w-3.5" /></button>
           </div>
-        </div>
+        </LiquidGlass>
       )}
       <button
         type="button"
