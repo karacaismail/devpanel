@@ -5,6 +5,12 @@ const root = path.resolve(__dirname);
 export default defineConfig({
   root,
   plugins: [react()],
-  test: { environment: "jsdom", globals: true, setupFiles: [path.resolve(root, "src/test/setup.ts")] },
+  test: {
+    environment: "jsdom",
+    globals: true,
+    dir: path.resolve(root, "src"),
+    include: ["src/**/*.{test,spec}.{ts,tsx}"],
+    setupFiles: [path.resolve(root, "src/test/setup.ts")],
+  },
   resolve: { alias: { "@": path.resolve(root, "src") } },
 });
