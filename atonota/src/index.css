@@ -115,7 +115,7 @@ kbd {
     isolation: isolate;
     overflow: hidden;
   }
-  /* KATMAN: üst gloss + diyagonal hareketli ışık huzmesi (likit his). */
+  /* KATMAN: statik üst gloss + sol-üst ışık birikmesi (iOS gibi, animasyon YOK). */
   .lg-surface::before {
     content: "";
     position: absolute;
@@ -123,14 +123,10 @@ kbd {
     border-radius: inherit;
     pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, calc(0.22 * var(--lg-specular, 0.6))), transparent 38%),
-      radial-gradient(120% 80% at 25% 12%, rgba(255, 255, 255, calc(0.16 * var(--lg-specular, 0.6))), transparent 55%),
-      linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, calc(0.14 * var(--lg-specular, 0.6))) 46%, transparent 60%);
-    background-size: 100% 100%, 100% 100%, 250% 100%;
-    background-position: 0 0, 0 0, -60% 0;
+      linear-gradient(180deg, rgba(255, 255, 255, calc(0.2 * var(--lg-specular, 0.6))), transparent 38%),
+      radial-gradient(120% 80% at 25% 12%, rgba(255, 255, 255, calc(0.14 * var(--lg-specular, 0.6))), transparent 55%);
     background-repeat: no-repeat;
     mix-blend-mode: screen;
-    animation: lgSheen 7s ease-in-out infinite;
   }
   /* KATMAN: kenar mercek parlaması — köşelerde toplanan ışık çizgisi (rim). */
   .lg-surface::after {
@@ -151,13 +147,6 @@ kbd {
     mask-composite: exclude;
     pointer-events: none;
   }
-}
-@keyframes lgSheen {
-  0%, 100% { background-position: 0 0, 0 0, -60% 0; }
-  50% { background-position: 0 0, 0 0, 160% 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .lg-surface::before { animation: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .lg-surface { transition: none; }
