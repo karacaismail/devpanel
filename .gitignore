@@ -3,7 +3,3 @@ dist/
 *.log
 .DS_Store
 
-# referans/birleştirme kaynakları — ayrı projeler, bu repoya dahil değil
-ahmetdev/
-boradev/
-alidev/
