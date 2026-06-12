@@ -161,14 +161,19 @@ export function displacementDataUri(cfg: GlassConfig, w = 256, h = 160): string 
  *  feImage(disp,spec) → kromatik 3'lü displace → screen blend → blur →
  *  saturate → specular rim screen blend.
  */
-export function filterMarkup(id: string, cfg: GlassConfig): string {
-  const { disp, spec } = buildMaps(cfg);
+export function filterMarkup(id: string, cfg: GlassConfig, w?: number, h?: number): string {
+  // Harita elemanın GERÇEK boyutunda üretilir → yuvarlatılmış dikdörtgen kenarı
+  // elemanın kenarıyla birebir hizalanır (trapping/kayma sorununu giderir).
+  const mw = w && w > 8 ? Math.round(w) : 256;
+  const mh = h && h > 8 ? Math.round(h) : 160;
+  const { disp, spec } = buildMaps(cfg, mw, mh);
   const ch = cfg.chroma;
   const sat = cfg.saturation;
+  // Filtre bölgesi = eleman kutusu (0,0,100%,100%) → feImage tam oturur, kayma yok.
   return `
-  <filter id="${id}" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
-    <feImage href="${disp}" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="disp"/>
-    <feImage href="${spec}" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="specmap"/>
+  <filter id="${id}" x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feImage href="${disp}" x="0" y="0" width="${mw}" height="${mh}" preserveAspectRatio="none" result="disp"/>
+    <feImage href="${spec}" x="0" y="0" width="${mw}" height="${mh}" preserveAspectRatio="none" result="specmap"/>
     <feDisplacementMap in="SourceGraphic" in2="disp" scale="${cfg.depth + ch}" xChannelSelector="R" yChannelSelector="G" result="dR"/>
     <feColorMatrix in="dR" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="cR"/>
     <feDisplacementMap in="SourceGraphic" in2="disp" scale="${cfg.depth}" xChannelSelector="R" yChannelSelector="G" result="dG"/>

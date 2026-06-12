@@ -12,6 +12,8 @@ import { filterMarkup } from "./displacement";
 
 let svgRoot: SVGSVGElement | null = null;
 const registered = new Set<string>();
+/** id → elemanın ölçülen boyutu; harita tam o boyutta üretilir (hizalama). */
+const sizes = new Map<string, { w: number; h: number }>();
 let listeners: GlassListener[] = [];
 let current: GlassConfig = { ...DEFAULTS };
 
@@ -39,17 +41,46 @@ export function supportsRealRefraction(): boolean {
   );
 }
 
-/** Verilen id için filtreyi (yeniden) üretir/enjekte eder. */
-export function registerFilter(id: string, cfg: GlassConfig = current): void {
+/** Tarayıcı en azından blur backdrop-filter destekliyor mu? (Safari/iOS/Firefox) */
+export function supportsBackdrop(): boolean {
+  if (typeof CSS === "undefined" || !CSS.supports) return false;
+  return (
+    CSS.supports("backdrop-filter", "blur(2px)") ||
+    CSS.supports("-webkit-backdrop-filter", "blur(2px)")
+  );
+}
+
+/**
+ * Platform-bağımsız backdrop-filter değeri:
+ *  - Chromium: gerçek SVG refraksiyon filtresi (url)
+ *  - Safari/iOS/Firefox: çok-katmanlı blur+saturate+brightness (CSS katmanlarıyla
+ *    birlikte gerçek cam hissi). Blur cfg.blur'a bağlı → tweak'le kontrol edilir.
+ *  - backdrop yoksa (eski): boş (yalnız tint + CSS katmanları)
+ */
+export function backdropValue(id: string, cfg: GlassConfig): string {
+  if (supportsRealRefraction()) return `url(#${id})`;
+  if (supportsBackdrop()) {
+    const b = Math.max(0, cfg.blur * 1.4 + 2);
+    return `blur(${b.toFixed(1)}px) saturate(${(cfg.saturation * 120).toFixed(0)}%) brightness(1.04)`;
+  }
+  return "none";
+}
+
+/** Verilen id için filtreyi (yeniden) üretir/enjekte eder. size verilirse saklanır. */
+export function registerFilter(
+  id: string,
+  cfg: GlassConfig = current,
+  size?: { w: number; h: number },
+): void {
   const root = ensureRoot();
   if (!root) return;
+  if (size && size.w > 0 && size.h > 0) sizes.set(id, size);
+  const s = sizes.get(id);
   const existing = root.querySelector(`#${id}`);
   if (existing) existing.parentElement?.removeChild(existing);
-  const tpl = document.createElementNS("http://www.w3.org/2000/svg", "g");
-  tpl.innerHTML = filterMarkup(id, cfg);
-  // <defs> sarmalı
+  // <defs> sarmalı — harita elemanın gerçek boyutunda üretilir (kenar hizası).
   const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-  defs.innerHTML = filterMarkup(id, cfg);
+  defs.innerHTML = filterMarkup(id, cfg, s?.w, s?.h);
   root.appendChild(defs);
   registered.add(id);
 }
@@ -57,7 +88,7 @@ export function registerFilter(id: string, cfg: GlassConfig = current): void {
 /** Reaktif config — değişince tüm kayıtlı filtreler ve dinleyiciler güncellenir. */
 export function setConfig(patch: Partial<GlassConfig>): void {
   current = { ...current, ...patch };
-  registered.forEach((id) => registerFilter(id, current));
+  registered.forEach((id) => registerFilter(id, current, sizes.get(id)));
   listeners.forEach((l) => l(current));
 }
 
@@ -75,17 +106,22 @@ export function subscribe(l: GlassListener): () => void {
  * Geri döndürülen temizleyici, gözlemcileri kaldırır.
  */
 export function applyGlass(el: HTMLElement, id: string, cfg: GlassConfig = current): () => void {
-  registerFilter(id, cfg);
-  const real = supportsRealRefraction();
   el.style.setProperty("--lg-tint", cfg.tint);
+  el.style.setProperty("--lg-radius", `${cfg.radius}px`);
+  el.style.setProperty("--lg-specular", String(cfg.specular));
   el.classList.add("lg-surface");
-  if (real) {
-    el.style.backdropFilter = `url(#${id})`;
-    (el.style as unknown as Record<string, string>)["webkitBackdropFilter"] = `url(#${id})`;
-  } else {
-    // Fallback: gerçek refraksiyon yoksa zengin buzlu cam.
-    el.style.backdropFilter = `blur(${cfg.blur + 8}px) saturate(150%)`;
-    (el.style as unknown as Record<string, string>)["webkitBackdropFilter"] = `blur(${cfg.blur + 8}px) saturate(150%)`;
-  }
-  return () => { el.classList.remove("lg-surface"); };
+  const sync = () => {
+    const rect = el.getBoundingClientRect();
+    registerFilter(id, cfg, { w: Math.round(rect.width), h: Math.round(rect.height) });
+    const v = backdropValue(id, cfg);
+    el.style.backdropFilter = v;
+    (el.style as unknown as Record<string, string>)["webkitBackdropFilter"] = v;
+  };
+  sync();
+  const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(sync) : null;
+  ro?.observe(el);
+  return () => {
+    ro?.disconnect();
+    el.classList.remove("lg-surface");
+  };
 }

@@ -4,6 +4,7 @@ import { TopBar } from "@/components/shell/TopBar";
 import { AmbientBackground } from "@/components/shell/AmbientBackground";
 import { DynamicIsland } from "@/components/shell/DynamicIsland";
 import { FloatingOrb } from "@/components/shell/FloatingOrb";
+import { GlassTweaker } from "@/components/shell/GlassTweaker";
 import { Engine } from "@/engine/Engine";
 import { getPage, PAGE_LIST } from "@/engine/loader";
 
@@ -39,6 +40,7 @@ export default function App() {
         </Routes>
       </main>
       <FloatingOrb />
+      <GlassTweaker />
     </div>
   );
 }
