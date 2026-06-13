@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState, type ReactNode, type HTMLAttributes, type Ref } from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { DEFAULTS, type GlassConfig } from "./types";
-import { registerFilter, subscribe, getConfig, backdropValue } from "./core";
+import { registerFilter, subscribe, getConfig, surfaceStyle } from "./core";
 
 /**
  * React adaptörü — popüler UI kütüphaneleriyle uyumlu API:
@@ -65,7 +65,7 @@ export function LiquidGlass({ config, asChild, className = "", style, children, 
 
   const cfg = cfgRef.current;
   const Comp = asChild ? Slot : "div";
-  const backdrop = backdropValue(id, cfg);
+  const surf = surfaceStyle(id, cfg);
 
   return (
     <Comp
@@ -77,8 +77,7 @@ export function LiquidGlass({ config, asChild, className = "", style, children, 
         "--lg-tint": cfg.tint,
         "--lg-radius": `${cfg.radius}px`,
         "--lg-specular": cfg.specular,
-        backdropFilter: backdrop,
-        WebkitBackdropFilter: backdrop,
+        ...surf,
         ...style,
       }}
       {...rest}

@@ -7,6 +7,6 @@
  * Reaktif:  setConfig({ depth: 80 })  → tüm yüzeyler anında güncellenir
  */
 export * from "./types";
-export { applyGlass, registerFilter, setConfig, getConfig, subscribe, supportsRealRefraction, supportsBackdrop, backdropValue } from "./core";
+export { applyGlass, registerFilter, setConfig, getConfig, subscribe, supportsRealRefraction, surfaceStyle } from "./core";
 export { filterMarkup, displacementDataUri } from "./displacement";
 export { LiquidGlass, useLiquidGlass } from "./react";

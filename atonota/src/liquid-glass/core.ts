@@ -17,16 +17,8 @@ const sizes = new Map<string, { w: number; h: number }>();
 let listeners: GlassListener[] = [];
 let current: GlassConfig = { ...DEFAULTS };
 
-/** Gerçek refraksiyon yoksa (Safari/iOS/Firefox) <html>'e lg-fallback ekler →
- *  CSS panelleri daha opak (buzlu katı) yapar; arka plan içeriği camdan sızmaz. */
-function syncFallbackClass(): void {
-  if (typeof document === "undefined") return;
-  document.documentElement.classList.toggle("lg-fallback", !supportsRealRefraction());
-}
-
 function ensureRoot(): SVGSVGElement | null {
   if (typeof document === "undefined") return null;
-  syncFallbackClass();
   if (svgRoot) return svgRoot;
   const el = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   el.setAttribute("aria-hidden", "true");
@@ -40,39 +32,51 @@ function ensureRoot(): SVGSVGElement | null {
   return el;
 }
 
-/** Tarayıcı url() backdrop-filter (gerçek displacement) destekliyor mu? */
+/**
+ * Tarayıcı SVG filtresini backdrop-filter olarak GERÇEKTEN render ediyor mu?
+ *
+ * KRİTİK: CSS.supports("backdrop-filter","url(#x)") Safari'de YANLIŞLIKLA true
+ * döner — Safari sözdizimini kabul eder ama WebKit bug 245510 nedeniyle
+ * feDisplacementMap'i backdrop olarak render ETMEZ. Firefox da desteklemez.
+ * SVG-backdrop refraksiyonu yalnız Blink (Chrome/Edge/Opera/Brave) motorunda
+ * çalışır. Bu yüzden motoru navigator.vendor ile ayırt ediyoruz:
+ *   Blink → "Google Inc."   ·   Safari → "Apple Computer, Inc."   ·   FF → ""
+ */
 export function supportsRealRefraction(): boolean {
   if (typeof CSS === "undefined" || !CSS.supports) return false;
-  return (
+  if (typeof navigator === "undefined") return false;
+  const isBlink = /Google Inc\./.test(navigator.vendor || "");
+  const cssOk =
     CSS.supports("backdrop-filter", "url(#x)") ||
-    CSS.supports("-webkit-backdrop-filter", "url(#x)")
-  );
-}
-
-/** Tarayıcı en azından blur backdrop-filter destekliyor mu? (Safari/iOS/Firefox) */
-export function supportsBackdrop(): boolean {
-  if (typeof CSS === "undefined" || !CSS.supports) return false;
-  return (
-    CSS.supports("backdrop-filter", "blur(2px)") ||
-    CSS.supports("-webkit-backdrop-filter", "blur(2px)")
-  );
+    CSS.supports("-webkit-backdrop-filter", "url(#x)");
+  return isBlink && cssOk;
 }
 
 /**
- * Platform-bağımsız backdrop-filter değeri:
- *  - Chromium: gerçek SVG refraksiyon filtresi (url)
- *  - Safari/iOS/Firefox: çok-katmanlı blur+saturate+brightness (CSS katmanlarıyla
- *    birlikte gerçek cam hissi). Blur cfg.blur'a bağlı → tweak'le kontrol edilir.
- *  - backdrop yoksa (eski): boş (yalnız tint + CSS katmanları)
+ * Yüzey stilleri TAMAMEN JS'te hesaplanır (CSS sınıfına bağımlı değil):
+ *  - Blink: gerçek SVG refraksiyon (url) + hafif şeffaf ton.
+ *  - Safari/iOS/Firefox: SVG-backdrop yok → OPAK buzlu cam (blur+saturate+
+ *    brightness + yarı-opak panel zemini) → arka plan içeriği camdan SIZMAZ.
+ * Blur cfg.blur'a bağlı (tweak'le ayarlanır).
  */
-export function backdropValue(id: string, cfg: GlassConfig): string {
-  if (supportsRealRefraction()) return `url(#${id})`;
-  if (supportsBackdrop()) {
-    const b = Math.max(0, cfg.blur * 1.4 + 2);
-    return `blur(${b.toFixed(1)}px) saturate(${(cfg.saturation * 120).toFixed(0)}%) brightness(1.04)`;
+export function surfaceStyle(id: string, cfg: GlassConfig): Record<string, string> {
+  if (supportsRealRefraction()) {
+    return {
+      backdropFilter: `url(#${id})`,
+      WebkitBackdropFilter: `url(#${id})`,
+      background: cfg.tint,
+    };
   }
-  return "none";
+  const b = Math.max(0, cfg.blur * 1.3 + 6);
+  const fb = `blur(${b.toFixed(1)}px) saturate(${Math.round(cfg.saturation * 135)}%) brightness(1.06)`;
+  return {
+    backdropFilter: fb,
+    WebkitBackdropFilter: fb,
+    // yarı-opak panel zemini — içerik sızmasını engeller (asıl çözüm bu)
+    background: "rgba(17,24,46,0.74)",
+  };
 }
+
 
 /** Verilen id için filtreyi (yeniden) üretir/enjekte eder. size verilirse saklanır. */
 export function registerFilter(
@@ -121,9 +125,10 @@ export function applyGlass(el: HTMLElement, id: string, cfg: GlassConfig = curre
   const sync = () => {
     const rect = el.getBoundingClientRect();
     registerFilter(id, cfg, { w: Math.round(rect.width), h: Math.round(rect.height) });
-    const v = backdropValue(id, cfg);
-    el.style.backdropFilter = v;
-    (el.style as unknown as Record<string, string>)["webkitBackdropFilter"] = v;
+    const s = surfaceStyle(id, cfg);
+    el.style.backdropFilter = s.backdropFilter;
+    (el.style as unknown as Record<string, string>)["webkitBackdropFilter"] = s.WebkitBackdropFilter;
+    el.style.background = s.background;
   };
   sync();
   const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(sync) : null;
