@@ -17,8 +17,16 @@ const sizes = new Map<string, { w: number; h: number }>();
 let listeners: GlassListener[] = [];
 let current: GlassConfig = { ...DEFAULTS };
 
+/** Gerçek refraksiyon yoksa (Safari/iOS/Firefox) <html>'e lg-fallback ekler →
+ *  CSS panelleri daha opak (buzlu katı) yapar; arka plan içeriği camdan sızmaz. */
+function syncFallbackClass(): void {
+  if (typeof document === "undefined") return;
+  document.documentElement.classList.toggle("lg-fallback", !supportsRealRefraction());
+}
+
 function ensureRoot(): SVGSVGElement | null {
   if (typeof document === "undefined") return null;
+  syncFallbackClass();
   if (svgRoot) return svgRoot;
   const el = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   el.setAttribute("aria-hidden", "true");

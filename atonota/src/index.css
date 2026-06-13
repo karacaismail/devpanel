@@ -128,6 +128,11 @@ kbd {
     isolation: isolate;
     overflow: hidden;
   }
+  /* Fallback (Safari/iOS/Firefox): gerçek refraksiyon yok → panel daha opak
+     buzlu katı yüzey olsun ki arka plandaki sayfa içeriği camdan sızmasın. */
+  .lg-fallback .lg-surface {
+    background-color: rgba(11, 17, 32, 0.82);
+  }
   /* KATMAN: statik üst gloss + sol-üst ışık birikmesi (iOS gibi, animasyon YOK). */
   .lg-surface::before {
     content: "";

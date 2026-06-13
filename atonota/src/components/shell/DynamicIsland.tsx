@@ -50,7 +50,7 @@ export function DynamicIsland() {
     <>
       {/* scrim: z-50 → tüm tetikleyicilerin (z-40) üstünde, panelin (z-60) altında.
           Yalnız karartma, blur YOK (kullanıcı isteği). */}
-      {expanded && <div className="fixed inset-0 z-50 bg-black/50" />}
+      {expanded && <div className="fixed inset-0 z-50 bg-black/65" />}
       <div
         className={cn(
           "fixed",
