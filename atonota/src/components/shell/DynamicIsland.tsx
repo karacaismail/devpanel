@@ -61,7 +61,7 @@ export function DynamicIsland() {
       {/* scrim: tetikleyicilerin (z-40) üstünde, panelin (z-[60]) altında; blur YOK */}
       <div
         className={cn(
-          "fixed inset-0 z-50 bg-black/65 transition-opacity duration-300",
+          "fixed inset-0 z-50 bg-black/40 transition-opacity duration-300",
           expanded ? "opacity-100" : "pointer-events-none opacity-0",
         )}
         onClick={() => { setExpanded(false); setAiResult(null); }}

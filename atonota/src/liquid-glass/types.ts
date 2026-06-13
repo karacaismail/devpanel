@@ -36,7 +36,7 @@ export interface GlassConfig {
 
 export const DEFAULTS: GlassConfig = {
   depth: 64,
-  blur: 1.5,
+  blur: 3,
   radius: 28,
   bezel: 18,
   edge: 0.8,

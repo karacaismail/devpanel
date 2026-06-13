@@ -60,20 +60,25 @@ export function supportsRealRefraction(): boolean {
  * Blur cfg.blur'a bağlı (tweak'le ayarlanır).
  */
 export function surfaceStyle(id: string, cfg: GlassConfig): Record<string, string> {
+  // Her iki tarayıcıda AYNI camsı görünüm (parite). Zemin ikisinde de hafif
+  // şeffaf ton — opak kutu DEĞİL.
   if (supportsRealRefraction()) {
+    // Blink: gerçek SVG mercek refraksiyonu (filtre ayrıca cfg.blur kadar buzlar).
     return {
       backdropFilter: `url(#${id})`,
       WebkitBackdropFilter: `url(#${id})`,
       background: cfg.tint,
     };
   }
-  const b = Math.max(0, cfg.blur * 1.3 + 6);
-  const fb = `blur(${b.toFixed(1)}px) saturate(${Math.round(cfg.saturation * 135)}%) brightness(1.06)`;
+  // Safari/iOS/Firefox: SVG-backdrop yok. Mercek yerine GÜÇLÜ buzlanma → içerik
+  // okunaklı sızmaz ama camsı kalır (opaklık değil, blur ile çözülür → Chrome'a
+  // görsel parite). Blur cfg.blur'a bağlı (tweak'le ayarlanır).
+  const b = Math.max(8, cfg.blur * 2 + 12);
+  const fb = `blur(${b.toFixed(1)}px) saturate(${Math.round(cfg.saturation * 150)}%) brightness(1.05)`;
   return {
     backdropFilter: fb,
     WebkitBackdropFilter: fb,
-    // yarı-opak panel zemini — içerik sızmasını engeller (asıl çözüm bu)
-    background: "rgba(17,24,46,0.74)",
+    background: cfg.tint,
   };
 }
 
