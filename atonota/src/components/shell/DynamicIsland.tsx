@@ -78,7 +78,7 @@ export function DynamicIsland() {
           </button>
           </LiquidGlass>
         ) : (
-          <LiquidGlass config={{ depth: 28, radius: 16, blur: 3, edge: 0.6, specular: 0.5 }} className="max-h-[82vh] w-[calc(100vw-1.5rem)] overflow-y-auto !rounded-2xl shadow-2xl shadow-black/60 animate-in sm:w-[720px]">
+          <LiquidGlass config={{ depth: 28, radius: 16, blur: 3, edge: 0.6, specular: 0.5 }} className="island-grow max-h-[82vh] w-[calc(100vw-1.5rem)] origin-top-left overflow-y-auto !rounded-2xl shadow-2xl shadow-black/60 sm:w-[720px] sm:origin-top">
             {/* AI-first komut çubuğu */}
             <div className="flex items-center gap-2 border-b border-border/50 px-4 py-3">
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-fg">A</span>

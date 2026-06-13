@@ -59,6 +59,19 @@ body {
   animation: animateIn 0.2s ease-out;
 }
 
+/* Dynamic Island — pill'den büyüyerek açılma (tek bileşen genişliyor hissi).
+   transform-origin pill'in çıktığı köşeye sabitlenir; scale + fade ile büyür. */
+@keyframes islandGrow {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+.island-grow {
+  animation: islandGrow 0.32s cubic-bezier(0.34, 1.4, 0.5, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .island-grow { animation: none; }
+}
+
 /* Matematik-defteri gridi — liquid-glass'ın kıracağı canlı zemin deseni. */
 .lg-grid {
   background-repeat: repeat;
