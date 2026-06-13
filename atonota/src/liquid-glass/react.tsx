@@ -26,23 +26,28 @@ export function LiquidGlass({ config, asChild, className = "", style, children, 
   const cfgRef = useRef<GlassConfig>({ ...DEFAULTS, ...config });
   const sizeRef = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
 
-  // boyut ölç + filtreyi o boyutta kaydet
+  // boyut ölç + filtreyi o boyutta kaydet (debounce: morf/resize sırasında her
+  // frame harita yeniden üretilmesin; boyut oturunca tek sefer kaydedilir).
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const measure = () => {
+    let t: ReturnType<typeof setTimeout> | undefined;
+    const apply = (s: { w: number; h: number }) => {
+      sizeRef.current = s;
+      registerFilter(id, cfgRef.current, s);
+    };
+    const measure = (immediate = false) => {
       const r = el.getBoundingClientRect();
       const s = { w: Math.round(r.width), h: Math.round(r.height) };
-      if (s.w !== sizeRef.current.w || s.h !== sizeRef.current.h) {
-        sizeRef.current = s;
-        registerFilter(id, cfgRef.current, s);
-        force((n) => n + 1);
-      }
+      if (s.w === sizeRef.current.w && s.h === sizeRef.current.h) return;
+      if (immediate) return apply(s);
+      clearTimeout(t);
+      t = setTimeout(() => apply(s), 130);
     };
-    measure();
-    const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(measure) : null;
+    measure(true);
+    const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => measure()) : null;
     ro?.observe(el);
-    return () => ro?.disconnect();
+    return () => { clearTimeout(t); ro?.disconnect(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
