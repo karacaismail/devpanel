@@ -5,7 +5,6 @@ import {
   setConfig,
   getConfig,
   subscribe,
-  supportsRealRefraction,
   type GlassConfig,
 } from "@/liquid-glass";
 
@@ -29,7 +28,6 @@ const SLIDERS: Array<[keyof GlassConfig, string, number, number, number]> = [
 export function GlassTweaker() {
   const [open, setOpen] = useState(false);
   const [cfg, setCfg] = useState<GlassConfig>(getConfig());
-  const real = supportsRealRefraction();
 
   useEffect(() => subscribe(setCfg), []);
 
@@ -99,9 +97,8 @@ export function GlassTweaker() {
           ))}
 
           <p className="text-[10px] text-muted">
-            {real
-              ? "Gerçek refraksiyon (Chromium). Değişiklik tüm cam yüzeylere anında uygulanır."
-              : "Bu tarayıcıda blur fallback (Safari/iOS/Firefox). Arka plan blur'unu yukarıdan kıs."}
+            Tüm tarayıcılarda (Chrome/Safari/Firefox) aynı buzlu-cam. Değişiklik
+            tüm cam yüzeylere anında uygulanır.
           </p>
         </LiquidGlass>
       )}

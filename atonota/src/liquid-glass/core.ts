@@ -59,21 +59,13 @@ export function supportsRealRefraction(): boolean {
  *    brightness + yarı-opak panel zemini) → arka plan içeriği camdan SIZMAZ.
  * Blur cfg.blur'a bağlı (tweak'le ayarlanır).
  */
-export function surfaceStyle(id: string, cfg: GlassConfig): Record<string, string> {
-  // Her iki tarayıcıda AYNI camsı görünüm (parite). Zemin ikisinde de hafif
-  // şeffaf ton — opak kutu DEĞİL.
-  if (supportsRealRefraction()) {
-    // Blink: gerçek SVG mercek refraksiyonu (filtre ayrıca cfg.blur kadar buzlar).
-    return {
-      backdropFilter: `url(#${id})`,
-      WebkitBackdropFilter: `url(#${id})`,
-      background: cfg.tint,
-    };
-  }
-  // Safari/iOS/Firefox: SVG-backdrop yok. Mercek yerine GÜÇLÜ buzlanma → içerik
-  // okunaklı sızmaz ama camsı kalır (opaklık değil, blur ile çözülür → Chrome'a
-  // görsel parite). Blur cfg.blur'a bağlı (tweak'le ayarlanır).
-  const b = Math.max(8, cfg.blur * 2 + 12);
+export function surfaceStyle(_id: string, cfg: GlassConfig): Record<string, string> {
+  // PARİTE: SVG-backdrop refraksiyonu yalnız Blink'te çalışır; Safari/Firefox'ta
+  // çalışmaz. Tarayıcılar arası FARK OLMAMASI için her ikisinde de AYNI teknik
+  // kullanılır → buzlu cam (blur+saturate+brightness). Çok-katmanlı his CSS
+  // highlight'larından (::before gloss, kenar, iç gölge) gelir. Blur/doygunluk
+  // tweak'le ayarlanır; ikisi de birebir aynı görünür.
+  const b = Math.max(6, cfg.blur * 2 + 10);
   const fb = `blur(${b.toFixed(1)}px) saturate(${Math.round(cfg.saturation * 150)}%) brightness(1.05)`;
   return {
     backdropFilter: fb,
