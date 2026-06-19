@@ -128,9 +128,9 @@ function IconContainer({ mouseX, title, icon, onClick, active, className }: Dock
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         className={cn(
-          "relative flex aspect-square items-center justify-center rounded-2xl shadow-lg shadow-black/30",
+          "relative flex aspect-square items-center justify-center rounded-2xl ring-1 ring-white/5",
           className ?? "bg-elevated",
-          active && "ring-2 ring-white/70",
+          active && "ring-2 ring-white/30",
         )}
       >
         <AnimatePresence>
@@ -145,7 +145,7 @@ function IconContainer({ mouseX, title, icon, onClick, active, className }: Dock
             </motion.div>
           )}
         </AnimatePresence>
-        <motion.div style={{ width: widthIcon, height: heightIcon }} className="flex items-center justify-center text-white">
+        <motion.div style={{ width: widthIcon, height: heightIcon }} className="flex items-center justify-center">
           {icon}
         </motion.div>
       </motion.div>
