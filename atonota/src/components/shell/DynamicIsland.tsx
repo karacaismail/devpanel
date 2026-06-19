@@ -3,13 +3,40 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Search, X, Sparkles, ChevronRight } from "lucide-react";
 import { NAV, PAGES } from "@/engine/loader";
 import { Icon } from "@/engine/registry";
-import { simulate, SUGGESTIONS } from "@/ai/simulate";
+import { simulate, isDestructive, SUGGESTIONS } from "@/ai/simulate";
+import { useAiStore } from "@/store/ai-store";
 import { LiquidGlass } from "@/liquid-glass";
 import { cn } from "@/lib/utils";
 
 interface Leaf { label: string; page: string; icon?: string }
 const ALL: Leaf[] = NAV.groups.flatMap((g) => g.items);
 const toPath = (page: string) => (page === "dashboard" ? "/" : `/${page}`);
+
+/**
+ * İkon palet'i — her ikona deterministik, canlı bir renk (metin + hafif arka plan).
+ * Sabit string literal'ler: Tailwind JIT tarayıcısının class'ları yakalaması için
+ * tam olarak yazılır, dinamik birleştirme YOK. [metin, arka plan] çiftleri.
+ */
+const ICON_COLORS: [string, string][] = [
+  ["text-sky-400", "bg-sky-500/10"],
+  ["text-violet-400", "bg-violet-500/10"],
+  ["text-fuchsia-400", "bg-fuchsia-500/10"],
+  ["text-amber-400", "bg-amber-500/10"],
+  ["text-emerald-400", "bg-emerald-500/10"],
+  ["text-rose-400", "bg-rose-500/10"],
+  ["text-cyan-400", "bg-cyan-500/10"],
+  ["text-indigo-400", "bg-indigo-500/10"],
+  ["text-orange-400", "bg-orange-500/10"],
+  ["text-teal-400", "bg-teal-500/10"],
+  ["text-pink-400", "bg-pink-500/10"],
+  ["text-lime-400", "bg-lime-500/10"],
+];
+const colorFor = (name?: string): [string, string] => {
+  const key = name ?? "?";
+  let h = 0;
+  for (let i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) >>> 0;
+  return ICON_COLORS[h % ICON_COLORS.length];
+};
 
 /**
  * iOS-tarzı Dynamic Island — TEK bileşen morf. Tıklayınca ayrı modal AÇILMAZ;
@@ -40,9 +67,19 @@ export function DynamicIsland() {
     return () => { document.removeEventListener("mousedown", onClick); document.removeEventListener("keydown", onKey); };
   }, []);
 
+  const record = useAiStore((s) => s.record);
+  const requestApply = useAiStore((s) => s.requestApply);
+  const pageId = pathname === "/" ? "dashboard" : pathname.replace(/^\//, "");
+
   const isAi = q.trim().length > 0 && !ALL.some((i) => i.label.toLocaleLowerCase("tr").includes(q.toLocaleLowerCase()));
   const navHits = q ? ALL.filter((i) => i.label.toLocaleLowerCase("tr").includes(q.toLocaleLowerCase())) : ALL;
-  const runAi = () => { if (q.trim()) setAiResult(simulate(q)); };
+  const runAi = () => { if (q.trim()) { const r = simulate(q); setAiResult(r); record(pageId, q, r); } };
+  const applyAi = () => {
+    if (!aiResult) return;
+    const entryId = record(pageId, q, aiResult);
+    requestApply({ entryId, result: aiResult, query: q, page: pageId, destructive: isDestructive(q) });
+    setExpanded(false); setAiResult(null);
+  };
   const go = (page: string) => { navigate(toPath(page)); setExpanded(false); setQ(""); setAiResult(null); };
 
   const open = () => { setExpanded(true); setTimeout(() => inputRef.current?.focus(), 160); };
@@ -126,8 +163,12 @@ export function DynamicIsland() {
                 <p className="mb-1.5 flex items-center gap-1.5 px-1 text-[10px] font-medium uppercase tracking-wider text-primary"><Sparkles className="h-3 w-3" /> AI önerisi · {aiResult.title}</p>
                 <pre className="overflow-auto rounded-lg border border-primary/20 bg-elevated p-3 font-mono text-[11px] leading-relaxed text-foreground/90">{aiResult.body}</pre>
                 <div className="mt-2 flex items-center gap-2">
-                  {aiResult.apply && <span className="rounded-md bg-primary px-2.5 py-1 text-[11px] text-primary-fg">Uygula (diff)</span>}
-                  <span className="rounded-md border border-border px-2.5 py-1 text-[11px] text-muted">Reddet</span>
+                  {aiResult.apply && (
+                    <button type="button" onClick={applyAi} className={cn("flex items-center gap-1.5 rounded-md px-2.5 py-1 text-[11px] font-medium text-primary-fg transition-colors", isDestructive(q) ? "bg-rose-500 hover:bg-rose-400" : "bg-primary hover:bg-primary/90")}>
+                      Uygula (diff){isDestructive(q) && <span className="text-rose-100">· onay</span>}
+                    </button>
+                  )}
+                  <button type="button" onClick={() => setAiResult(null)} className="rounded-md border border-border px-2.5 py-1 text-[11px] text-muted hover:text-foreground">Reddet</button>
                   <span className="ml-auto text-[10px] text-muted">{aiResult.note}</span>
                 </div>
               </div>
@@ -152,9 +193,10 @@ export function DynamicIsland() {
                 <div className="grid grid-cols-3 gap-1 sm:grid-cols-4 md:grid-cols-6">
                   {navHits.slice(0, 36).map((it) => {
                     const active = toPath(it.page) === pathname;
+                    const [tc, bc] = colorFor(it.icon);
                     return (
                       <button key={it.page} type="button" onClick={() => go(it.page)} className={cn("flex flex-col items-center gap-1.5 rounded-xl p-3 transition-all", active ? "bg-elevated ring-1 ring-border" : "hover:bg-elevated/60")}>
-                        <span className={cn("flex h-9 w-9 items-center justify-center rounded-lg", active ? "bg-primary/20" : "bg-elevated/80")}><Icon name={it.icon} className="h-4 w-4 text-primary" /></span>
+                        <span className={cn("flex h-9 w-9 items-center justify-center rounded-lg ring-1 transition-all", bc, active ? "ring-white/15" : "ring-white/5")}><Icon name={it.icon} className={cn("h-4 w-4", tc)} /></span>
                         <span className={cn("text-center text-[10px] font-medium leading-tight", active ? "text-foreground" : "text-muted")}>{PAGES[it.page]?.title?.replace("{{org}} · ", "") ?? it.label}</span>
                       </button>
                     );

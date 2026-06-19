@@ -130,3 +130,12 @@ export const SUGGESTIONS = [
   "logları özetle",
   "party için kontrat testi üret",
 ];
+
+/**
+ * Bir komut/önerinin geri-alınamaz (yıkıcı) olup olmadığını söyler. Apply diyaloğu
+ * true dönerse isim-yazarak onay (ConfirmDanger deseni) ister. Deterministik.
+ */
+export function isDestructive(text: string): boolean {
+  const t = norm(text);
+  return /(sil|drop|kaldir|reset|sifirla|migration|migrate|production|prod|gonder|deploy|rollback|geri al|truncate|purge)/.test(t);
+}

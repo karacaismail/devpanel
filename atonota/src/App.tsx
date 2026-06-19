@@ -5,6 +5,9 @@ import { AmbientBackground } from "@/components/shell/AmbientBackground";
 import { DynamicIsland } from "@/components/shell/DynamicIsland";
 import { FloatingOrb } from "@/components/shell/FloatingOrb";
 import { GlassTweaker } from "@/components/shell/GlassTweaker";
+import { Toaster } from "@/components/shell/Toaster";
+import { AiApplyDialog } from "@/components/shell/AiApplyDialog";
+import { Dock } from "@/components/shell/Dock";
 import { Engine } from "@/engine/Engine";
 import { getPage, PAGE_LIST } from "@/engine/loader";
 
@@ -41,6 +44,9 @@ export default function App() {
       </main>
       <FloatingOrb />
       <GlassTweaker />
+      <Dock />
+      <AiApplyDialog />
+      <Toaster />
     </div>
   );
 }

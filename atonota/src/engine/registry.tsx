@@ -14,10 +14,10 @@ import type { Section } from "./types";
 
 type Variant = "default" | "secondary" | "outline" | "success" | "warning" | "destructive";
 
-function Icon({ name, className }: { name?: string; className?: string }) {
+function Icon({ name, className, style }: { name?: string; className?: string; style?: React.CSSProperties }) {
   if (!name) return null;
-  const C = (Icons as Record<string, unknown>)[name] as React.ComponentType<{ className?: string }> | undefined;
-  return C ? <C className={className} /> : null;
+  const C = (Icons as Record<string, unknown>)[name] as React.ComponentType<{ className?: string; style?: React.CSSProperties }> | undefined;
+  return C ? <C className={className} style={style} /> : null;
 }
 
 /* ---- bölüm bileşenleri ---- */
